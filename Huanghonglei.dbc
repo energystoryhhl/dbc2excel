@@ -1,0 +1,165 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+SSFDSFSDAFBO_ SFDHJFHSJKF789SD789
+BS_:
+
+BU_: APM CanBlue Car_PC BMS DCDC SCU BRS_ECU
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ MASTER_ESA_CheckSum : 0|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ MASTER_REQ_CheckSum : 0|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 384 SAS_180_CAN1: 8 Vector__XXX
+ SG_ SAS_SteeringAngle : 7|16@0- (0.1,-780) [-1320|-240] "degree"  BRS_ECU
+
+BO_ 613 PredictiveOS_LoadCollective3_ECU: 8 BRS_ECU
+ SG_ miopt_w : 55|16@0+ (0.00152587890625,0) [0|99.9984741210938] "%" Vector__XXX
+ SG_ zwout : 47|8@0- (0.75,0) [-96|95.25] "" Vector__XXX
+ SG_ zwopt : 39|8@0- (0.75,0) [-96|95.25] "Grad KW" Vector__XXX
+ SG_ mifal_w : 23|16@0+ (0.00152587890625,0) [0|99.9984741210938] "%" Vector__XXX
+ SG_ mifa_w : 7|16@0+ (0.00152587890625,0) [0|99.9984741210938] "%" Vector__XXX
+
+BO_ 612 PredictiveOS_LoadCollective2_ECU: 8 BRS_ECU
+ SG_ PCA_CurrGearSelect : 15|8@0+ (1,-1) [-1|254] "" Vector__XXX
+ SG_ CoPOM_stOperModEdrv : 5|4@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ CoPOM_tqDesEdrv : 55|16@0- (0.1,0) [-3276.8|3276.7] "Nm" Vector__XXX
+ SG_ IOT_B_koe : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ B_stoanf : 7|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ lamsbg_w : 39|16@0+ (0.000244140625,0) [0|15.999755859375] "" Vector__XXX
+ SG_ mrped_w : 23|16@0+ (0.0030517578125,0) [0|199.996948242188] "%" Vector__XXX
+
+BO_ 610 PredictiveOS_CanBlue2_ECU: 8 BRS_ECU
+ SG_ rl_w : 7|16@0+ (0.0234375,0) [0|1535.9765625] "%"  CanBlue
+ SG_ CoPOM_bPcaRcptActv : 56|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ CoPOM_bPcaCoastActv : 57|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ PEM_StFunction : 59|2@0+ (1,0) [0|3] ""  CanBlue
+ SG_ PCA_StFunction : 61|2@0+ (1,0) [0|3] ""  CanBlue
+ SG_ B_cbs_ua : 40|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ CoPOM_tqElMDesPca : 55|10@0+ (0.1,-50) [-50|0] ""  CanBlue
+ SG_ PCA_stCstProc : 43|3@0+ (1,0) [0|7] ""  CanBlue
+ SG_ PT_bNoGrip : 44|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ B_kuppl : 45|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ IOT_B_sa : 46|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ CoPOM_POS_bBrsErr : 47|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ Eem_stAct : 31|16@0+ (1,0) [0|56636] ""  CanBlue
+ SG_ IOT_Tmot : 23|8@0+ (0.75,-48) [-48|143.25] ""  CanBlue
+
+BO_ 609 PredictiveOS_CanBlue1_ECU: 8 BRS_ECU
+ SG_ VehV_a : 47|16@0- (0.001,0) [-32.768|32.767] ""  CanBlue
+ SG_ PCA_vSpdLim_kmh : 63|8@0+ (1,0) [0|255] ""  CanBlue
+ SG_ PCA_lDst2Des : 1|10@0+ (1,0) [0|1000] ""  CanBlue
+ SG_ PCA_stSpdLmt : 29|3@0+ (1,0) [0|7] ""  CanBlue
+ SG_ PCA_stCoastMode : 3|2@0+ (1,0) [0|3] ""  CanBlue
+ SG_ Brs_BRS_Sta : 26|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ Brk_r : 25|10@0+ (0.1,0) [0|100] ""  CanBlue
+ SG_ PCA_flgPedLiftRecom : 4|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ PCA_flgDrvTakRecom : 5|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ CoPOM_rRelSOCDesPred : 23|10@0+ (0.1,0) [0|100] ""  CanBlue
+ SG_ CoPOM_flgSOCDesPred : 6|1@0+ (1,0) [0|1] ""  CanBlue
+ SG_ CoPOM_flgIdleCoastEna : 7|1@0+ (1,0) [0|1] ""  CanBlue
+
+BO_ 512 Camera_Radar_Data: 7 Car_PC
+ SG_ Radar_RelativeV_kmh : 39|9@0+ (0.5,-128) [-128|127] "km/h"  BRS_ECU
+ SG_ Radar_RelativeD_m : 23|10@0+ (0.5,0) [0|250] "m"  BRS_ECU
+ SG_ Camera_TimeLeft_s : 55|8@0+ (1,0) [0|60] "s"  BRS_ECU
+ SG_ Camera_LightColor : 9|2@0+ (1,0) [0|3] ""  BRS_ECU
+ SG_ Camera_Distance_footway : 7|9@0+ (0.5,0) [0|255] "m"  BRS_ECU
+
+BO_ 1280 VEH_MSG: 8 BRS_ECU
+ SG_ EMS_VehicleSpeed : 12|13@0+ (0.05625,0) [0|360] "km/h"  BMS
+ SG_ EMS_VehicleSpeedValid : 13|1@0+ (1,0) [0|1] ""  BMS
+ SG_ veh_cb_cmd_e : 0|1@0+ (1,0) [0|1] ""  BMS
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ SG_ 613 zwout "Ignition angle output value";
+CM_ SG_ 613 zwopt "Optimized model reference ignition angle";
+CM_ SG_ 613 mifal_w "Indicated driver's wish torque for torque coordination cylinder filling";
+CM_ SG_ 613 mifa_w "Desired indicated engine torque";
+CM_ SG_ 612 PCA_CurrGearSelect "Engaged gear";
+CM_ SG_ 612 CoPOM_stOperModEdrv "0 - idle
+1 - charge
+2 - Reku
+3 - Boost
+4 - discharge";
+CM_ SG_ 612 CoPOM_tqDesEdrv "Desired Electric drive torque.";
+CM_ SG_ 612 IOT_B_koe "Condition for AC-compressor ON";
+CM_ SG_ 612 mrped_w "Relative torque request by accelerator pedal";
+CM_ SG_ 610 PEM_StFunction "01 PEM enable
+10 PEM disable";
+CM_ SG_ 610 PCA_StFunction "01 PCA Enable
+10 PCA Disable";
+CM_ SG_ 610 B_cbs_ua "Condition clutch sensor indicate clutch on bottom";
+CM_ SG_ 610 IOT_B_sa "fuel off";
+CM_ SG_ 609 VehV_a "The acceleration of the vehicle";
+CM_ SG_ 609 PCA_stSpdLmt "1 TrafficLight Speed Limit
+2 Curve Speed Limit
+3 Speed limit sign
+4 Front Vehicle speed limit";
+CM_ SG_ 609 PCA_stCoastMode "stCstMode 0  No coast
+                  1  Full Coasting
+                  2  CR";
+CM_ SG_ 512 Radar_RelativeD_m "Distance to front vehicle in the same lane
+0x3FF  Invalid value";
+CM_ SG_ 512 Camera_TimeLeft_s "Left Time :
+invalid value:0xFF
+0:60 Normal";
+CM_ SG_ 512 Camera_LightColor "Tarffic light color";
+CM_ SG_ 512 Camera_Distance_footway "Distance to footway  by Camera recognization.
+invalid value : 0x1FF";
+CM_ SG_ 1280 veh_cb_cmd_e "Circuit Breaker command from the Vehicle/Tester.";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 10 1000;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgCycleTime" 10;
+BA_DEF_DEF_  "BusType" "";
+BA_ "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 613 100;
+BA_ "GenMsgCycleTime" BO_ 612 100;
+BA_ "GenMsgCycleTime" BO_ 610 100;
+BA_ "GenMsgCycleTime" BO_ 609 100;
+BA_ "GenMsgCycleTime" BO_ 512 50;
+BA_ "GenMsgCycleTime" BO_ 1280 50;
+BA_ "GenSigStartValue" SG_ 612 PCA_CurrGearSelect 1;
+BA_ "GenSigStartValue" SG_ 610 CoPOM_tqElMDesPca 500;
+BA_ "GenSigStartValue" SG_ 610 IOT_Tmot 64;
+VAL_ 512 Camera_LightColor 3 "red light" 2 "yellow light" 1 "green light" 0 "Overrange" ;
+VAL_ 1280 veh_cb_cmd_e 1 "VEH_CB_CMD_CLOSE" 0 "VEH_CB_CMD_OPEN" ;
+

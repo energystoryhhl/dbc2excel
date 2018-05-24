@@ -1,0 +1,237 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: SCU BRS_ECU
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ MASTER_ESA_CheckSum : 0|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ MASTER_REQ_CheckSum : 0|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ New_Signal_263 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_262 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VehV_a : 0|16@0- (0.001,0) [-32.768|32.767] "" Vector__XXX
+
+BO_ 1366 MASTER_CTRL_ESA: 8 BRS_ECU
+ SG_ MASTER_ESA_TorqueLimitation : 7|6@0+ (-1,0) [-44|0] "Nm"  SCU
+ SG_ MASTER_ESA_Speedgradient : 10|10@0+ (-10,0) [-8000|0] "Rpm/s"  SCU
+ SG_ MASTER_ESA_EndSpeed : 1|7@0+ (10,0) [0|1000] "Rpm"  SCU
+ SG_ MASTER_ESA_DurationMax : 16|5@0+ (0.1,0) [0|2] "s"  SCU
+ SG_ MASTER_DIS_ExMaxCurrent : 27|6@0+ (0.1,0) [0|5] "A"  SCU
+ SG_ MASTER_ESA_RollingCounter : 51|4@0+ (1,0) [0|15] ""  SCU
+ SG_ MASTER_Generator_RegVoltage : 47|9@0+ (0.1,10) [20|54] "V"  SCU
+ SG_ MASTER_Generator_TrqLimitation : 37|6@0+ (-1,0) [-30|0] "Nm"  SCU
+
+BO_ 1624 SCU_PREDICTION: 8 SCU
+ SG_ SCU_Negative_Trq_Prediction_10s : 13|10@0+ (0.1,-55) [-55|0] ""  BRS_ECU
+ SG_ SCU_PREDICTION_CheckSum : 63|8@0+ (1,0) [0|255] ""  BRS_ECU
+ SG_ SCU_PREDICTION_RollingCounter : 51|4@0+ (1,0) [0|15] ""  BRS_ECU
+ SG_ SCU_Positive_Trq_Prediction_10s : 7|10@0+ (0.1,0) [0|55] "NM"  BRS_ECU
+
+BO_ 1621 SCU_DIAG: 8 SCU
+ SG_ SCU_12V_VOLTAGE_LOW : 36|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_REVERSE_SPEED_FAULT : 35|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_12V_VOLTAGE_HIGH : 37|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_BUSOFF_FAULT : 38|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_UNLOCK_PTL_FAULT : 20|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_DIAG_RollingCounter : 51|4@0+ (1,0) [0|15] ""  BRS_ECU
+ SG_ SCU_DIAG_CheckSum : 63|8@0+ (1,0) [0|255] ""  BRS_ECU
+ SG_ SCU_BRUSH_WEAR_FAULT : 27|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_EXC_OPENCIRCUIT_FAULT : 39|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_EXC_LATENT_FAULT : 24|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_EXC_HSM_FAULT : 25|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_CAN_COM_ERROR : 26|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_DC_VOLTAGEMEAS_SENSOR_FAULT : 28|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_PHX_CURRENT_SENSOR_FAULT : 17|3@0+ (1,0) [0|6] ""  BRS_ECU
+ SG_ SCU_MACHINE_TEMP_SENSOR_FAULT : 18|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_INVERTER_TEMP_SENSOR_FAULT : 19|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_POSITION_SENSORS_FAULT : 21|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_STATOR_FAULT : 22|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_INVERTER_FAULT : 23|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_TORQUE_CTRL_TIMEOUT : 8|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_TORQUE_SIGN_FAULT : 9|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_TORQUE_LEVEL_FAULT : 10|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_ROTOR_OVERCURRENT : 11|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_STATOR_OVERCURRENT : 14|3@0+ (1,0) [0|6] ""  BRS_ECU
+ SG_ SCU_LOADDUMP : 15|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_OVERVOLTAGE : 0|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_MOSFET_JUNCTION_PROTECTION : 1|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_OVERHEATING : 2|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_STARTER_WARNING : 3|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_THERMAL_DERATING : 4|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_STALLED_ROTOR_PROTECTION : 6|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_TORQUE_SUSPENSION : 7|1@0+ (1,0) [0|1] ""  BRS_ECU
+
+BO_ 1620 SCU_FUNCTIONAL: 8 SCU
+ SG_ SCU_FUNCTIONAL_RollingCounter : 51|4@0+ (1,0) [0|15] ""  BRS_ECU
+ SG_ SCU_FUNCTIONAL_CheckSum : 63|8@0+ (1,0) [0|255] ""  BRS_ECU
+ SG_ SCU_Positive_Trq_Prediction_1s : 12|10@0+ (0.1,0) [0|55] "Nm"  BRS_ECU
+ SG_ SCU_Negative_Trq_Prediction_1s : 18|10@0+ (-0.1,0) [-55|0] "Nm"  BRS_ECU
+ SG_ SCU_IDC_Current : 24|10@0+ (1,-400) [-400|400] "A"  BRS_ECU
+ SG_ SCU_Estimated_Torque : 7|11@0+ (0.1,-55) [-55|55] "Nm"  BRS_ECU
+
+BO_ 1364 MASTER_CTRL_REQ: 8 BRS_ECU
+ SG_ MASTER_REQ_RollingCounter : 51|4@0+ (1,0) [0|15] ""  SCU
+ SG_ MASTER_TRQCTRL_POS_TRQ_LIM : 3|6@0+ (1,0) [0|55] "Nm"  SCU
+ SG_ MASTER_TRQCTRL_NEG_TRQ_LIM : 13|6@0+ (-1,0) [-44|0] "Nm"  SCU
+ SG_ MASTER_NEGATIVE_TORQUE_GRADIENT : 24|7@0+ (-10,0) [-1000|0] "Nm/s"  SCU
+ SG_ MASTER_POSITIVE_TORQUE_GRADIENT : 31|7@0+ (10,0) [0|1000] "Nm/s"  SCU
+ SG_ MASTER_TorqueCtrl_RegTorque : 23|8@0+ (0.5,-44) [-44|55] "Nm"  SCU
+ SG_ MASTER_MM_REQUEST : 7|4@0+ (1,0) [1|8] ""  SCU
+
+BO_ 1619 SCU_STATUS: 8 SCU
+ SG_ SCU_STATUS_RollingCounter : 51|4@0+ (1,0) [0|15] ""  BRS_ECU
+ SG_ SCU_STATUS_CheckSum : 63|8@0+ (1,0) [0|255] ""  BRS_ECU
+ SG_ CRANK_POSSIBLE_IF_STOPPED : 43|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ SCU_ENA_STATUS : 44|1@0+ (1,0) [0|1] ""  BRS_ECU
+ SG_ iBSG_Temperature_Rate : 31|7@0+ (1,0) [0|120] "%"  BRS_ECU
+ SG_ SCU_Rotor_Speed : 15|15@0+ (1,-2000) [-2000|22000] "Rpm"  BRS_ECU
+ SG_ SCU_BUS_VOLTAGE : 24|12@0+ (0.02,0) [0|70] "V"  BRS_ECU
+ SG_ SCU_MM_STATUS : 7|8@0+ (1,0) [16|131] ""  BRS_ECU
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ SG_ 3221225472 VehV_a "The acceleration of the vehicle";
+CM_ SG_ 1366 MASTER_ESA_TorqueLimitation "Torque limitation set point in ESA mode";
+CM_ SG_ 1366 MASTER_ESA_Speedgradient "Negative speed gradient in ESA mode";
+CM_ SG_ 1366 MASTER_ESA_EndSpeed "Machine end speed for ESA mode";
+CM_ SG_ 1366 MASTER_ESA_DurationMax "Maximum duration of ESA";
+CM_ SG_ 1366 MASTER_DIS_ExMaxCurrent "Maximum excitation current during discharge";
+CM_ SG_ 1366 MASTER_Generator_RegVoltage "Voltage regulation Value in GENERATOR mode";
+CM_ SG_ 1366 MASTER_Generator_TrqLimitation "Machine torque limitation in GENERATOR mode";
+CM_ BO_ 1621 "Signal description for Diagnostics";
+CM_ SG_ 1621 SCU_EXC_OPENCIRCUIT_FAULT "Rotor open circuit detection";
+CM_ SG_ 1621 SCU_EXC_LATENT_FAULT "Excitation circuit DMAG mosfet failure detection";
+CM_ SG_ 1621 SCU_EXC_HSM_FAULT "Excitation circuit High side mosfet failure detection";
+CM_ SG_ 1621 SCU_CAN_COM_ERROR "CAN fault detection";
+CM_ SG_ 1621 SCU_DC_VOLTAGEMEAS_SENSOR_FAULT "+BAT48V Voltage sensor fault detection";
+CM_ SG_ 1621 SCU_PHX_CURRENT_SENSOR_FAULT "Phase current sensor fault detection";
+CM_ SG_ 1621 SCU_MACHINE_TEMP_SENSOR_FAULT "Temperature sensor fault detection on Stator";
+CM_ SG_ 1621 SCU_INVERTER_TEMP_SENSOR_FAULT "Temperature sensor fault detection on Control board";
+CM_ SG_ 1621 SCU_POSITION_SENSORS_FAULT "Power module failure detection in functional mode";
+CM_ SG_ 1621 SCU_STATOR_FAULT "Power module failure detection in functional mode";
+CM_ SG_ 1621 SCU_INVERTER_FAULT "Power module failure detection in functional mode";
+CM_ SG_ 1621 SCU_TORQUE_CTRL_TIMEOUT "Torque control mode  timeout  detection at max current";
+CM_ SG_ 1621 SCU_TORQUE_SIGN_FAULT "Unexpected torque sign detection";
+CM_ SG_ 1621 SCU_TORQUE_LEVEL_FAULT "Unexpected torque level detection";
+CM_ SG_ 1621 SCU_ROTOR_OVERCURRENT "Rotor over current detection in functional mode";
+CM_ SG_ 1621 SCU_STATOR_OVERCURRENT "Functional Phase over current detection";
+CM_ SG_ 1621 SCU_LOADDUMP "LOADDUMP detection on +BAT48V";
+CM_ SG_ 1621 SCU_OVERVOLTAGE "Too high voltage detection on +BAT48V detection";
+CM_ SG_ 1621 SCU_MOSFET_JUNCTION_PROTECTION "Power module junction temperature overheating  detection in functional mode";
+CM_ SG_ 1621 SCU_OVERHEATING "Thermal overheating protection Flag for stator, rotor, Power module, Control Board and Excitation board";
+CM_ SG_ 1621 SCU_STARTER_WARNING "Starter mode warning detection due to high temperature";
+CM_ SG_ 1621 SCU_THERMAL_DERATING "Output Power Derating due to temperature";
+CM_ SG_ 1621 SCU_STALLED_ROTOR_PROTECTION "Inverter thermal protection during cranking phase (stalled rotor)";
+CM_ SG_ 1621 SCU_TORQUE_SUSPENSION "Negative speed detection in during a start attempt";
+CM_ BO_ 1620 "Return Machine Inverter Torque data";
+CM_ SG_ 1620 SCU_IDC_Current "Continuous side current during Machine Mode";
+CM_ SG_ 1620 SCU_Estimated_Torque "Instantaneous estimated torque ";
+CM_ BO_ 1364 "Send Machine Inverter Control Request";
+CM_ SG_ 1364 MASTER_TRQCTRL_POS_TRQ_LIM "Positive torque limitation in torque control mode";
+CM_ SG_ 1364 MASTER_TRQCTRL_NEG_TRQ_LIM "Negative torque limitation in torque control mode";
+CM_ SG_ 1364 MASTER_NEGATIVE_TORQUE_GRADIENT "Negative Torque Gradient";
+CM_ SG_ 1364 MASTER_POSITIVE_TORQUE_GRADIENT "Positive Torque Gradient";
+CM_ SG_ 1364 MASTER_TorqueCtrl_RegTorque "Torque request parameter";
+CM_ SG_ 1364 MASTER_MM_REQUEST "Requested Mode";
+CM_ BO_ 1619 "Return Machine Inverter Status";
+CM_ SG_ 1619 CRANK_POSSIBLE_IF_STOPPED "Engine status for restart need";
+CM_ SG_ 1619 SCU_ENA_STATUS "SCU mode enable status";
+CM_ SG_ 1619 iBSG_Temperature_Rate "IBSG Temperature Rate";
+CM_ SG_ 1619 SCU_Rotor_Speed "Mechanical Machine Speed";
+CM_ SG_ 1619 SCU_BUS_VOLTAGE "+BAT48V  storage voltage";
+CM_ SG_ 1619 SCU_MM_STATUS "Machine functional status";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 10 1000;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgCycleTime" 10;
+BA_DEF_DEF_  "BusType" "";
+BA_ "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 1621 100;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_ESA_TorqueLimitation -0;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_ESA_Speedgradient 200;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_ESA_EndSpeed 10;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_ESA_DurationMax 10;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_DIS_ExMaxCurrent 20;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_Generator_RegVoltage 380;
+BA_ "GenSigStartValue" SG_ 1366 MASTER_Generator_TrqLimitation 10;
+BA_ "GenSigStartValue" SG_ 1624 SCU_Negative_Trq_Prediction_10s 550;
+BA_ "GenSigStartValue" SG_ 1620 SCU_Positive_Trq_Prediction_1s 500;
+BA_ "GenSigStartValue" SG_ 1620 SCU_Negative_Trq_Prediction_1s 440;
+BA_ "GenSigStartValue" SG_ 1620 SCU_IDC_Current 400;
+BA_ "GenSigStartValue" SG_ 1620 SCU_Estimated_Torque 550;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_TRQCTRL_POS_TRQ_LIM 30;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_TRQCTRL_NEG_TRQ_LIM 30;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_NEGATIVE_TORQUE_GRADIENT 10;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_POSITIVE_TORQUE_GRADIENT 10;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_TorqueCtrl_RegTorque 88;
+BA_ "GenSigStartValue" SG_ 1364 MASTER_MM_REQUEST 1;
+BA_ "GenSigStartValue" SG_ 1619 SCU_Rotor_Speed 2000;
+BA_ "GenSigStartValue" SG_ 1619 SCU_BUS_VOLTAGE 0;
+BA_ "GenSigStartValue" SG_ 1619 SCU_MM_STATUS 16;
+VAL_ 1621 SCU_EXC_OPENCIRCUIT_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_EXC_LATENT_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_EXC_HSM_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_CAN_COM_ERROR 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_DC_VOLTAGEMEAS_SENSOR_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_PHX_CURRENT_SENSOR_FAULT 6 "Phase 6 Fault" 5 "Phase 5 Fault" 4 "Phase 4 Fault" 3 "Phase 3 Fault" 2 "Phase 2 Fault" 1 "Phase 1 Fault" 0 "No fault" ;
+VAL_ 1621 SCU_MACHINE_TEMP_SENSOR_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_INVERTER_TEMP_SENSOR_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_POSITION_SENSORS_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_STATOR_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_INVERTER_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_TORQUE_CTRL_TIMEOUT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_TORQUE_SIGN_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_TORQUE_LEVEL_FAULT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_ROTOR_OVERCURRENT 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_STATOR_OVERCURRENT 6 "Phase 6 Fault" 5 "Phase 5 Fault" 4 "Phase 4 Fault" 3 "Phase 3 Fault" 2 "Phase 2 Fault" 1 "Phase 1 Fault" 0 "No fault" ;
+VAL_ 1621 SCU_LOADDUMP 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_OVERVOLTAGE 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_MOSFET_JUNCTION_PROTECTION 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_OVERHEATING 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_STARTER_WARNING 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_THERMAL_DERATING 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_STALLED_ROTOR_PROTECTION 1 "Fault" 0 "No fault" ;
+VAL_ 1621 SCU_TORQUE_SUSPENSION 1 "Fault" 0 "No fault" ;
+VAL_ 1364 MASTER_MM_REQUEST 8 "DISCHARGE" 7 "ESA" 5 "TORQUE_CTRL" 4 "GENERATOR" 1 "NEUTRAL" ;
+VAL_ 1619 CRANK_POSSIBLE_IF_STOPPED 1 "ACTIVE" 0 "NOT_ACTIVE" ;
+VAL_ 1619 SCU_ENA_STATUS 1 "ACTIVE" 0 "NOT_ACTIVE" ;
+VAL_ 1619 SCU_MM_STATUS 131 "DISCHARGE_OUT_OF_RANGE" 130 "DISCHARGE_FAULT" 129 "DISCHARGE_DONE" 128 "DISCHARGE_ACTIVE" 116 "ESA_INHIB" 115 "ESA_OUT_OF_RANGE" 114 " ESA_FAULT" 113 "ESA_DONE" 112 " ESA_ACTIVE" 86 "TORQUE_CTRL_MAX" 85 "TORQUE_CTRL_DERATING" 84 "TORQUE_CTRL_INHIB" 83 "TORQUE_CTRL_OUT_OF_RANGE" 82 "TORQUE_CTRL_FAULT" 81 "TORQUE_CTRL_IDLE" 80 "TORQUE_CTRL_ACTIVE" 68 " GENERATOR_MAX" 67 "GENERATOR_DERATING" 66 "GENERATOR_OUT_OF_RANGE" 65 "GENERATOR_FAULT" 64 "GENERATOR_ACTIVE" 16 "NEUTRAL" ;
+
