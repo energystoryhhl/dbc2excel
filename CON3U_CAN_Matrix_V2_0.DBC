@@ -1,0 +1,311 @@
+VERSION "DNNBNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: TM BMS HCU DC
+VAL_TABLE_ Tab_2e15 32767 "Failure" 32766 "Init" ;
+VAL_TABLE_ Tab_stModeDstC 2 "DstC_int_ext" 1 "DstC_ext" 0 "DstC_off" ;
+VAL_TABLE_ Tab_stModeInvDes 14 "DisCharge" 10 "UdcCtlBat" 9 "IsFrqCtl" 8 "TrqCtl" 7 "nCtlInt" 6 "nCtlExt" 5 "alOffsetCal" 3 "Standby" ;
+VAL_TABLE_ Tab_2e10 1023 "Failure" 1022 "Init" ;
+VAL_TABLE_ Tab_stModeInvCurr 14 "DisCharge" 13 "Failure" 12 "PreFailure" 11 "Afterrun" 10 "UdcCtlBat" 9 "IsFrqCtl" 8 "TrqCtl" 7 "nCtlInt" 6 "nCtlExt" 5 "alOffsetCal" 3 "Standby" 1 "PreCharge" 0 "Initialization" ;
+VAL_TABLE_ Tab_stModeDCDC 5 "Failure" 3 "UdcLnkDischarge" 2 "Boost" 1 "Buck" 0 "Off" ;
+VAL_TABLE_ Tab_2e08 255 "Failure" 254 "Init" ;
+VAL_TABLE_ Tab_2e09 511 "Failure" 510 "Init" ;
+VAL_TABLE_ Tab_2e16 65535 "Failure" 65534 "Init" ;
+VAL_TABLE_ Tab_2e11 2047 "Failure" 2046 "Init" ;
+VAL_TABLE_ Tab_2e12 4095 "Failure" 4094 "Init" ;
+
+
+BO_ 528 TM_03: 8 TM
+ SG_ TM03_DisCharDc : 60|1@1+ (1,0) [0|1] ""  HCU,DC
+ SG_ TM03_OfsAl : 48|12@1+ (0.0878906,0) [0|359.912] ""  HCU,DC
+ SG_ TM03_TrqCurrWoDmp : 35|11@1+ (1,-1023) [-1023|1024] "Nm"  HCU,DC
+ SG_ TM03_TrqMinAvail : 24|11@1+ (1,-1023) [-1023|1024] "Nm"  HCU,DC
+ SG_ TM03_TrqMaxAvail : 12|11@1+ (1,-1023) [-1023|1024] "Nm"  HCU,DC
+ SG_ TM03_Counter : 8|4@1+ (1,0) [0|15] ""  HCU,DC
+ SG_ TM03_Checksum : 0|8@1+ (1,0) [0|255] ""  HCU,DC
+
+BO_ 784 BMS_02: 8 BMS
+ SG_ BMS02_Counter : 8|4@1+ (1,0) [0|15] ""  DC,TM
+ SG_ BMS02_BattVolt : 12|10@1+ (1,0) [0|1023] "V"  DC,TM
+ SG_ BMS02_Checksum : 0|8@1+ (1,0) [0|255] ""  DC,TM
+
+BO_ 768 BMS_01: 8 BMS
+ SG_ BMS01_stMainRelay : 58|2@1+ (1,0) [0|3] ""  DC,TM
+ SG_ BMS01_UdcMin : 48|10@1+ (1,0) [0|1023] "V"  DC,TM
+ SG_ BMS01_UdcMax : 38|10@1+ (1,0) [0|1023] "V"  DC,TM
+ SG_ BMS01_IdcMin : 27|11@1+ (1,-1023) [-1023|1024] "A"  DC,TM
+ SG_ BMS01_IdcMax : 16|11@1+ (1,-1023) [-1023|1024] "A"  DC,TM
+ SG_ BMS01_Counter : 8|4@1+ (1,0) [0|15] ""  DC,TM
+ SG_ BMS01_Checksum : 0|8@1+ (1,0) [0|255] ""  DC,TM
+
+BO_ 1056 DC_03: 8 DC
+ SG_ DC03_FailCode4 : 48|16@1+ (1,0) [0|65535] ""  HCU
+ SG_ DC03_FailCode3 : 32|16@1+ (1,0) [0|65535] ""  HCU
+ SG_ DC03_FailCode2 : 16|16@1+ (1,0) [0|65535] ""  HCU
+ SG_ DC03_FailCode1 : 0|16@1+ (1,0) [0|65535] ""  HCU
+
+BO_ 304 HCU_03: 8 HCU
+ SG_ HCU03_ED_kDmp : 47|8@1+ (1,0) [0|255] ""  TM
+ SG_ HCU03_ED_bDmpCtlReq : 46|1@1+ (1,0) [0|1] ""  TM
+ SG_ HCU03_Counter : 8|4@1+ (1,0) [0|15] ""  TM
+ SG_ HCU03_Checksum : 0|8@1+ (1,0) [0|255] ""  TM
+ SG_ HCU03_DC_IdcLvMaxSetP : 24|11@1+ (1,-1023) [-1023|1024] "A"  TM,DC
+ SG_ HCU03_DC_IdcHvMaxSetP : 35|11@1+ (0.0625,-64) [-64|63.9375] "A"  TM,DC
+ SG_ HCU03_DC_UdcLvSetP : 15|9@1+ (0.125,0) [0|63.875] "V"  TM,DC
+ SG_ HCU03_DC_stModeReq : 12|3@1+ (1,0) [0|7] ""  TM,DC
+
+BO_ 1040 DC_02: 8 DC
+ SG_ DC02_TempCurr : 48|8@1+ (1,-40) [-40|215] "°C" Vector__XXX
+ SG_ DC02_bPWRLim : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DC02_Counter : 8|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ DC02_Checksum : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DC02_bDernOvrUdcHv : 22|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bErrVltg : 18|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bErrShtOff : 16|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bDernOvrUdcLv : 24|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_rUtilRateDFM : 32|9@1+ (0.25,0) [0|127.75] "%"  HCU
+ SG_ DC02_bDernUndrUdcLv : 25|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bDernUndrUdcHv : 23|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bDernTemp : 19|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bDernOvrIdcLv : 20|1@1+ (1,0) [0|1] ""  HCU
+ SG_ DC02_bDernOvrIdcHv : 21|1@1+ (1,0) [0|1] ""  HCU
+
+BO_ 544 DC_01: 8 DC
+ SG_ DC01_UdcHvCurr : 48|11@1+ (0.5,0) [0|1024] "V" Vector__XXX
+ SG_ DC01_bReadyHv : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DC01_Counter : 8|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ DC01_Checksum : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DC01_stMode : 13|3@1+ (1,0) [0|7] ""  HCU
+ SG_ DC01_UdcLvCurr : 38|9@1+ (0.125,0) [0|63.875] "V"  HCU
+ SG_ DC01_IdcLvCurr : 16|11@1+ (1,-1023) [-1023|1024] "A"  HCU
+ SG_ DC01_IdcHvCurr : 27|11@1+ (0.0625,-64) [-64|63.9375] "A"  HCU
+
+
+
+CM_ SG_ 528 TM03_DisCharDc "active discharge of DCDC";
+CM_ SG_ 528 TM03_OfsAl "Offset angle";
+CM_ SG_ 528 TM03_TrqMinAvail "min torque available";
+CM_ SG_ 528 TM03_TrqMaxAvail "max torque available ";
+CM_ SG_ 528 TM03_Counter "Message rolling counter";
+CM_ SG_ 528 TM03_Checksum "Checksum, XOR of each bytes";
+CM_ SG_ 784 BMS02_Counter "Message rolling counter.";
+CM_ SG_ 784 BMS02_BattVolt "actual HV voltage from BMS";
+CM_ SG_ 784 BMS02_Checksum "Checksum, XOR of each bytes in the frame";
+CM_ SG_ 768 BMS01_stMainRelay "BMS Main Relay status";
+CM_ SG_ 768 BMS01_UdcMin "min voltage HV";
+CM_ SG_ 768 BMS01_UdcMax "max voltage HV";
+CM_ SG_ 768 BMS01_IdcMin "max current for regenerative torque";
+CM_ SG_ 768 BMS01_IdcMax "max current for motor torque";
+CM_ SG_ 768 BMS01_Counter "Message rolling counter.";
+CM_ SG_ 768 BMS01_Checksum "Checksum, XOR of each bytes in the frame";
+CM_ BO_ 1056 "message contains four sections for failure codes";
+CM_ SG_ 1056 DC03_FailCode4 "failure code 4 (dfc entry)";
+CM_ SG_ 1056 DC03_FailCode3 "failure code 3 (dfc entry)";
+CM_ SG_ 1056 DC03_FailCode2 "failure code 2 (dfc entry)";
+CM_ SG_ 1056 DC03_FailCode1 "failure code 1 (dfc entry)";
+CM_ SG_ 304 HCU03_Counter "Message rolling counter";
+CM_ SG_ 304 HCU03_Checksum "Checksum, XOR of each bytes in the frame";
+CM_ SG_ 304 HCU03_DC_IdcLvMaxSetP "set or limit value of IDcDcLv ";
+CM_ SG_ 304 HCU03_DC_IdcHvMaxSetP "set or limit value of IDcDcHv ";
+CM_ SG_ 304 HCU03_DC_UdcLvSetP "Setpoint of voltage LV";
+CM_ SG_ 304 HCU03_DC_stModeReq "Requested operation mode of DCDC";
+CM_ SG_ 1040 DC02_TempCurr "actual temperature of DCDC";
+CM_ SG_ 1040 DC02_bPWRLim "power limitation";
+CM_ SG_ 1040 DC02_Counter "Message rolling counter";
+CM_ SG_ 1040 DC02_Checksum "Checksum, XOR of each bytes";
+CM_ SG_ 1040 DC02_bDernOvrUdcHv "Derating because of over voltage at HV";
+CM_ SG_ 1040 DC02_bErrVltg "shutdown because of under-/over-voltage at input-/output-side";
+CM_ SG_ 1040 DC02_bErrShtOff "DCDC shutdown because of internal hardware failure
+";
+CM_ SG_ 1040 DC02_bDernOvrUdcLv "Derating because of over voltage at LV";
+CM_ SG_ 1040 DC02_rUtilRateDFM "utilization of DCDC, corresponds to I_act / I_max";
+CM_ SG_ 1040 DC02_bDernUndrUdcLv "Derating because of too low voltage at LV";
+CM_ SG_ 1040 DC02_bDernUndrUdcHv "Derating because of too low voltage at HV";
+CM_ SG_ 1040 DC02_bDernTemp "Derating because of over temperature DCDC";
+CM_ SG_ 1040 DC02_bDernOvrIdcLv "Derating because of over current at LV";
+CM_ SG_ 1040 DC02_bDernOvrIdcHv "Derating becasuse of over current at HV";
+CM_ SG_ 544 DC01_UdcHvCurr "High side voltage of DCDC";
+CM_ SG_ 544 DC01_bReadyHv "DCDC ready to drive";
+CM_ SG_ 544 DC01_Counter "Message rolling counter";
+CM_ SG_ 544 DC01_Checksum "Checksum, XOR of each bytes in the frame";
+CM_ SG_ 544 DC01_stMode "stMode of DCDC";
+CM_ SG_ 544 DC01_UdcLvCurr "Low side voltage of DCDC";
+CM_ SG_ 544 DC01_IdcLvCurr "Low side  current of DCDC ";
+CM_ SG_ 544 DC01_IdcHvCurr "High side current of DCDC";
+BA_DEF_ EV_  "GenEnvIsGeneratedSnd" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT -100000000000 100000000000;
+BA_DEF_ EV_  "GenEnvAutoGenCtrl" ENUM  "No","Yes";
+BA_DEF_ EV_  "GenEnvMsgOffset" INT 0 2147483647;
+BA_DEF_ EV_  "GenEnvMsgName" STRING ;
+BA_DEF_ EV_  "GenEnvIsGeneratedDsp" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+BA_DEF_  "GenEnvVarPrefix" STRING ;
+BA_DEF_  "GenEnvVarEndingSnd" STRING ;
+BA_DEF_  "GenEnvVarEndingDsp" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BO_  "GenMsgTimeoutTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 65535;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclicX","spontanX","cyclicIfActiveX","spontanWithDelay","cyclicAndSpontanX","cyclicAndSpontanWithDelay","spontanWithRepitition","cyclicIfActiveAndSpontanWD","cyclicIfActiveFast";
+BA_DEF_  "Manufacturer" ENUM  "RB";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
+BA_DEF_DEF_  "GenEnvIsGeneratedSnd" "No";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenEnvAutoGenCtrl" "No";
+BA_DEF_DEF_  "GenEnvMsgOffset" 0;
+BA_DEF_DEF_  "GenEnvMsgName" "";
+BA_DEF_DEF_  "GenEnvIsGeneratedDsp" "No";
+BA_DEF_DEF_  "GenSigEnvVarType" "undef";
+BA_DEF_DEF_  "GenEnvVarPrefix" "Env";
+BA_DEF_DEF_  "GenEnvVarEndingSnd" "_";
+BA_DEF_DEF_  "GenEnvVarEndingDsp" "Dsp_";
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "GenMsgTimeoutTime" 0;
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "";
+BA_DEF_DEF_  "Manufacturer" "RB";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_ "Manufacturer" 0;
+BA_ "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 528 10;
+BA_ "GenMsgSendType" BO_ 528 0;
+BA_ "GenMsgCycleTime" BO_ 784 10;
+BA_ "GenMsgSendType" BO_ 784 0;
+BA_ "GenMsgCycleTime" BO_ 768 20;
+BA_ "GenMsgSendType" BO_ 768 0;
+BA_ "GenMsgSendType" BO_ 1056 0;
+BA_ "GenMsgCycleTime" BO_ 1056 100;
+BA_ "GenMsgTimeoutTime" BO_ 304 0;
+BA_ "GenMsgStartDelayTime" BO_ 304 0;
+BA_ "GenMsgCycleTimeFast" BO_ 304 0;
+BA_ "GenMsgDelayTime" BO_ 304 0;
+BA_ "GenMsgSendType" BO_ 304 0;
+BA_ "GenMsgCycleTime" BO_ 304 10;
+BA_ "GenMsgTimeoutTime" BO_ 1040 0;
+BA_ "GenMsgStartDelayTime" BO_ 1040 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1040 0;
+BA_ "GenMsgDelayTime" BO_ 1040 0;
+BA_ "GenMsgSendType" BO_ 1040 0;
+BA_ "GenMsgCycleTime" BO_ 1040 100;
+BA_ "GenMsgTimeoutTime" BO_ 544 0;
+BA_ "GenMsgStartDelayTime" BO_ 544 0;
+BA_ "GenMsgCycleTimeFast" BO_ 544 0;
+BA_ "GenMsgDelayTime" BO_ 544 0;
+BA_ "GenMsgSendType" BO_ 544 0;
+BA_ "GenMsgCycleTime" BO_ 544 10;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_DisCharDc 0;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_OfsAl 1;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_TrqCurrWoDmp 0;
+BA_ "GenSigStartValue" SG_ 528 TM03_TrqCurrWoDmp 1023;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_TrqMinAvail 0;
+BA_ "GenSigStartValue" SG_ 528 TM03_TrqMinAvail 1023;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_TrqMaxAvail 0;
+BA_ "GenSigStartValue" SG_ 528 TM03_TrqMaxAvail 1023;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 528 TM03_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 784 BMS02_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 784 BMS02_BattVolt 0;
+BA_ "GenSigEnvVarType" SG_ 784 BMS02_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_stMainRelay 0;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_UdcMin 0;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_UdcMax 0;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_IdcMin 0;
+BA_ "GenSigStartValue" SG_ 768 BMS01_IdcMin 1023;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_IdcMax 0;
+BA_ "GenSigStartValue" SG_ 768 BMS01_IdcMax 1023;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 768 BMS01_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 1056 DC03_FailCode4 0;
+BA_ "GenSigEnvVarType" SG_ 1056 DC03_FailCode3 0;
+BA_ "GenSigEnvVarType" SG_ 1056 DC03_FailCode2 0;
+BA_ "GenSigEnvVarType" SG_ 1056 DC03_FailCode1 0;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_ED_kDmp 0;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_ED_bDmpCtlReq 0;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_DC_IdcLvMaxSetP 0;
+BA_ "GenSigStartValue" SG_ 304 HCU03_DC_IdcLvMaxSetP 1023;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_DC_IdcHvMaxSetP 1;
+BA_ "GenSigStartValue" SG_ 304 HCU03_DC_IdcHvMaxSetP 1024;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_DC_UdcLvSetP 1;
+BA_ "GenSigEnvVarType" SG_ 304 HCU03_DC_stModeReq 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_TempCurr 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bPWRLim 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernOvrUdcHv 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bErrVltg 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bErrShtOff 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernOvrUdcLv 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_rUtilRateDFM 1;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernUndrUdcLv 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernUndrUdcHv 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernTemp 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernOvrIdcLv 0;
+BA_ "GenSigEnvVarType" SG_ 1040 DC02_bDernOvrIdcHv 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_UdcHvCurr 1;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_bReadyHv 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_Counter 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_Checksum 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_stMode 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_UdcLvCurr 1;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_IdcLvCurr 0;
+BA_ "GenSigEnvVarType" SG_ 544 DC01_IdcHvCurr 1;
+VAL_ 528 TM03_OfsAl 1023 "Failure" 1022 "Init" ;
+VAL_ 528 TM03_TrqCurrWoDmp 2047 "Failure" 2046 "Init" ;
+VAL_ 528 TM03_TrqMinAvail 2047 "Failure" 2046 "Init" ;
+VAL_ 528 TM03_TrqMaxAvail 2047 "Failure" 2046 "Init" ;
+VAL_ 784 BMS02_BattVolt 2047 "Failure" 1022 "Init" ;
+VAL_ 768 BMS01_stMainRelay 3 "Failure" 2 "Open/Close" 1 "AllClose" 0 "AllOpen" ;
+VAL_ 768 BMS01_UdcMin 1023 "Failure" 1022 "Init" ;
+VAL_ 768 BMS01_UdcMax 1023 "Failure" 1022 "Init" ;
+VAL_ 768 BMS01_IdcMin 2047 "Failure" 2046 "Init" ;
+VAL_ 768 BMS01_IdcMax 2047 "Failure" 2046 "Init" ;
+VAL_ 304 HCU03_ED_kDmp 255 "Failure" 254 "Init" ;
+VAL_ 304 HCU03_DC_IdcLvMaxSetP 2047 "Failure" 2046 "Init" ;
+VAL_ 304 HCU03_DC_IdcHvMaxSetP 2047 "Failure" 2046 "Init" ;
+VAL_ 304 HCU03_DC_UdcLvSetP 511 "Failure" 510 "Init" ;
+VAL_ 304 HCU03_DC_stModeReq 2 "Discharge" 1 "Buck" 0 "Standby" ;
+VAL_ 1040 DC02_TempCurr 255 "Failure" 254 "Init" ;
+VAL_ 1040 DC02_rUtilRateDFM 2047 "Failure" 2046 "Init" ;
+VAL_ 544 DC01_UdcHvCurr 511 "Failure" 510 "Init" ;
+VAL_ 544 DC01_stMode 5 "Failure" 3 "UdcLnkDischarge" 1 "Buck" 0 "Standby" ;
+VAL_ 544 DC01_UdcLvCurr 511 "Failure" 510 "Init" ;
+VAL_ 544 DC01_IdcLvCurr 2047 "Failure" 2046 "Init" ;
+VAL_ 544 DC01_IdcHvCurr 2047 "Failure" 2046 "Init" ;
+
