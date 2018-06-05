@@ -46,7 +46,7 @@ class MyFrame(wx.Frame):
     #响应事件
     def OnAbout(self, e):
         # A message dialog box with an OK button. wx.OK is a standard ID in wxWidgets.
-        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY黄洪磊 i2347\nV0.1", "关于", wx.OK)
+        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY黄洪磊 i2347\nV0.2\n有任何问题请发送dbc文件至int.honglei.huang@uaes.com", "关于", wx.OK)
         dlg.ShowModal()  # Show it
         dlg.Destroy()  # finally destroy it when finished.
 
@@ -71,7 +71,7 @@ class MyFrame(wx.Frame):
 
 
     #################
-
-app = wx.App(False)
-frame = MyFrame(None, 'DBC转Excel工具')
-app.MainLoop()
+if __name__ == "__main__":
+    app = wx.App(False)
+    frame = MyFrame(None, 'DBC转Excel工具')
+    app.MainLoop()

@@ -251,9 +251,13 @@ class DbcLoad(object):
                     if line_list[i][-2] != ';':
                         comment = str(line_list[i].split('"')[-1])
                         t = 0
-                        while (line_list[i+t][-2] != ';'):
+                        while(True):
                             t = t + 1
                             comment = comment + line_list[i+t]
+                            if( line_list[i + t] != "\n"):
+                                if (line_list[i + t][-2] == ';') :
+                                    break
+
                             # if line_list[i][-2] == ';':
                             #     break
                     else:
@@ -276,7 +280,7 @@ class DbcLoad(object):
                 if line_list[i].split()[0] == 'BA_' and line_list[i].split()[1] == '"GenSigStartValue"':#查找到了相应的START_VALUE
                     bo_id = int(line_list[i].split()[3])
                     sg_name = line_list[i].split()[4]
-                    inital_value = hex(int(line_list[i].split()[5].rstrip(';')))
+                    inital_value = hex(int(float((line_list[i].split()[5].rstrip(';')))))
                     self.put_inedx(bo_id, sg_name, "inital_value", inital_value)
                     if if_show:
                         print(str(bo_id)+' '+sg_name+str(inital_value))
@@ -312,32 +316,65 @@ class DbcLoad(object):
 
         #读取发送者和接收者
         #tran_recv = set()
+        # len_of_dbc_list = len(self.dbc_list)
+        # i = 0
+        # while i < len_of_dbc_list:
+        #     for bo_line in self.dbc_list[i]:
+        #         if 'transmitter' in bo_line:
+        #             self.tran_recv.add(bo_line['transmitter'])
+        #         if 'receiver' in bo_line:
+        #             self.tran_recv.add(bo_line['receiver'])
+        #     i += 1
+        # for each in self.tran_recv:
+        #     self.tran_recv_list.append(each)
+        # print(self.tran_recv_list)
+        # list_len = len(self.tran_recv_list)
+        # i = 0
+        # while i < list_len:
+        #     j = 0
+        #     while j < list_len:
+        #         if j == i:
+        #             j = j+1
+        #             continue
+        #         if self.tran_recv_list[j].find(self.tran_recv_list[i]) != -1:
+        #             self.tran_recv_list.remove(self.tran_recv_list[j])
+        #             list_len -= 1
+        #         j += 1
+        #     i += 1
         len_of_dbc_list = len(self.dbc_list)
         i = 0
         while i < len_of_dbc_list:
             for bo_line in self.dbc_list[i]:
                 if 'transmitter' in bo_line:
-                    self.tran_recv.add(bo_line['transmitter'])
+                    if bo_line['transmitter'].find(',') != -1:
+                        self.tran_recv.add(bo_line['transmitter'].split(','))
+                    else:
+                        self.tran_recv.add(bo_line['transmitter'])
+                    #self.tran_recv.add(bo_line['transmitter'])
                 if 'receiver' in bo_line:
-                    self.tran_recv.add(bo_line['receiver'])
+                    if bo_line['receiver'].find(',')!= -1:
+                        self.tran_recv.add(bo_line['receiver'].split(',')[0])
+                        self.tran_recv.add(bo_line['receiver'].split(',')[1])
+                    else:
+                        self.tran_recv.add(bo_line['receiver'])
+                    #self.tran_recv.add(bo_line['receiver'])
             i += 1
         for each in self.tran_recv:
             self.tran_recv_list.append(each)
         print(self.tran_recv_list)
-        list_len = len(self.tran_recv_list)
-        i = 0
-        while i < list_len:
-            j = 0
-            while j < list_len:
-                if j == i:
-                    j = j+1
-                    continue
-                if self.tran_recv_list[j].find(self.tran_recv_list[i]) != -1:
-                    self.tran_recv_list.remove(self.tran_recv_list[j])
-                    list_len -= 1
-                j += 1
-            i += 1
-
+        # list_len = len(self.tran_recv_list)
+        # i = 0
+        # while i < list_len:
+        #     j = 0
+        #     while j < list_len:
+        #         if j == i:
+        #             j = j+1
+        #             continue
+        #         if self.tran_recv_list[j].find(self.tran_recv_list[i]) != -1:
+        #             self.tran_recv_list.remove(self.tran_recv_list[j])
+        #             list_len -= 1
+        #         j += 1
+        #     i += 1
 
         ############打印结果
         if if_show:
@@ -621,9 +658,10 @@ class DbcLoad(object):
                             else:
                                 sheet.write(tittle_row + row_counter, signal_name_col + 22 + k, '', style_index)
                         k += 1
-                        book.save(self.dbc_name.replace('.', '_') + '.xls')
+                        #book.save(self.dbc_name.replace('.', '_') + '.xls')
             i = i+1
 
+        book.save(self.dbc_name.replace('.', '_') + '.xls')
 
     def dbc2excel(self, filepath):
         self.dbc_fd = open(filepath, 'r')
@@ -636,8 +674,8 @@ class DbcLoad(object):
 
 
 if __name__ == "__main__":
-    dbc_cls = DbcLoad('Huanghonglei.dbc')
-    dbc_cls.dbc2excel('Huanghonglei.dbc')
+    dbc_cls = DbcLoad('Tx2TryDBC.dbc')
+    dbc_cls.dbc2excel('Tx2TryDBC.dbc')
     # dbc_cls.parse_dbc(1)
     # dbc_cls.dbc_info()
     # dbc_cls.dbc_excel_gen()

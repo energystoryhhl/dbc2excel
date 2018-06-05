@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69332162-3926-4903-bcfe-95b2a5b0aad5" name="Default" comment="" />
+    <list default="true" id="69332162-3926-4903-bcfe-95b2a5b0aad5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbc2excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbc2excel_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,12 +15,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="dbc2excel_main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+            <state relative-caret-position="42">
+              <caret line="56" column="54" lean-forward="true" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+              <folding>
+                <element signature="e#22#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -23,8 +31,8 @@
       <file leaf-file-name="dbc2excel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbc2excel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11951">
-              <caret line="629" column="48" selection-start-line="629" selection-start-column="48" selection-end-line="629" selection-end-column="48" />
+            <state relative-caret-position="88">
+              <caret line="647" column="47" lean-forward="true" selection-start-line="647" selection-start-column="47" selection-end-line="647" selection-end-column="47" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -41,6 +49,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -54,32 +65,28 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1693" />
-    <option name="y" value="-253" />
-    <option name="width" value="1483" />
-    <option name="height" value="858" />
+    <option name="x" value="91" />
+    <option name="y" value="248" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="wx02" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wx02" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wx02" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="dbc2excel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbc2excel" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -97,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_t">
+  <component name="RunManager" selected="Python.dbc2excel_main">
     <configuration name="dbc2excel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="wx02" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,9 +166,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main_t" />
-        <item itemvalue="Python.dbc2excel" />
         <item itemvalue="Python.dbc2excel_main" />
+        <item itemvalue="Python.dbc2excel" />
+        <item itemvalue="Python.main_t" />
       </list>
     </recent_temporary>
   </component>
@@ -179,48 +186,72 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1693" y="-253" width="1483" height="858" extended-state="0" />
-    <editor active="true" />
+    <frame x="91" y="248" width="1378" height="780" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2563054" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25624081" />
       <window_info anchor="bottom" id="TODO" order="9" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="right" id="Run" order="3" weight="0.52419907" />
-      <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
+      <window_info anchor="right" id="Run" order="3" weight="0.53744495" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Python Console" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="3" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.5278196" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main_t.py">
+    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="1026">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
-            <element signature="e#354#363#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainFrame.py">
+    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+        <state relative-caret-position="4845">
+          <caret line="255" column="60" selection-start-line="255" selection-start-column="60" selection-end-line="255" selection-end-column="60" />
           <folding>
-            <element signature="e#353#362#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6631">
+          <caret line="349" column="25" lean-forward="true" selection-start-line="349" selection-start-column="25" selection-end-line="349" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -229,6 +260,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -236,6 +270,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11951">
           <caret line="629" column="48" selection-start-line="629" selection-start-column="48" selection-end-line="629" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_t.py" />
+    <entry file="file://$PROJECT_DIR$/mainFrame.py" />
+    <entry file="file://F:/python/Lib/site-packages/xlwt/CompoundDoc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2177">
+          <caret line="257" column="8" lean-forward="true" selection-start-line="257" selection-start-column="8" selection-end-line="257" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/python/Lib/site-packages/wx/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="2095" selection-start-line="2095" selection-end-line="2095" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="56" column="54" lean-forward="true" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="647" column="47" lean-forward="true" selection-start-line="647" selection-start-column="47" selection-end-line="647" selection-end-column="47" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
