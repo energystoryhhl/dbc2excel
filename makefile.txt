@@ -1,0 +1,1 @@
+pyinstaller -F -w -i bitbug_favicon.ico dbc2excel_main.py

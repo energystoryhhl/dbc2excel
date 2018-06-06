@@ -90,5 +90,5 @@ VAL_ 328 DCDCErrorStauts 1 "Error" 0 "No Error" ;
 VAL_ 328 DCDC_Running_Permission 1 "Permission" 0 "Not permission" ;
 VAL_ 328 DCDC_running 1 "Working" 0 "Not Working" ;
 VAL_ 340 DC_DC_Enable 1 "enable" 0 "disable" ;
-VAL_ DC_DC_Enable 1 "enable" 0 "disable" ;
+
 

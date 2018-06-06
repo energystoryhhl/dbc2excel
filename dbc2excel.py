@@ -180,58 +180,59 @@ class DbcLoad(object):
                     if if_show:
                         print('转换得到：'+str(bo_dict))
                     ##对BO_LIST的操作
-                    i += 1
-                    while line_list[i].split()[0] == str_of_SG : #循环读取DGlist
-                        sg_list = line_list[i].split()
-                        if if_show:
-                            print(sg_list)
-                        ##对SG_LIST的操作
-                        self.num_of_sg += 1
-                        sg_dict = {}
-                        sg_dict['type'] = sg_list[location_of_sg_type]
-                        sg_dict['signal_name'] = sg_list[location_of_sg_name]
-                        end_of_start = sg_list[location_of_sg_s_bit_size].find('|')
-                        end_of_size = sg_list[location_of_sg_s_bit_size].find('@')
-                        sg_dict['start_bit'] = int(sg_list[location_of_sg_s_bit_size][0:end_of_start])
-                        sg_dict['signal_size'] = int(sg_list[location_of_sg_s_bit_size][end_of_start+1:end_of_size])
-                        sg_dict['byte_order'] = int(sg_list[location_of_sg_s_bit_size][end_of_size+1])
-                        sg_dict['value_type'] = sg_list[location_of_sg_s_bit_size][end_of_size+2]
-                        if sg_dict['value_type'] == '+':
-                            sg_dict['value_type'] = 0
-                        else:
-                            sg_dict['value_type'] = 1
-                        end_of_factor = sg_list[location_of_sg_factor].find(',')
-                        end_of_offset = sg_list[location_of_sg_factor].find(')')
-                        sg_dict['factor'] = float(sg_list[location_of_sg_factor][1:end_of_factor])
-                        sg_dict['offset'] = float(sg_list[location_of_sg_factor][end_of_factor+1:end_of_offset])
-                        end_of_min = sg_list[location_of_sg_max_min].find('|')
-                        end_of_max = sg_list[location_of_sg_max_min].find(']')
-                        sg_dict['minimum'] = float(sg_list[location_of_sg_max_min][1:end_of_min])
-                        sg_dict['maximum'] = float(sg_list[location_of_sg_max_min][end_of_min+1:end_of_max])
-                        sg_dict['unit'] = re.sub('"', '', sg_list[location_of_sg_unit])
-                        sg_dict['receiver'] = sg_list[location_of_sg_receiver]
-                        bo_list.append(sg_dict)     #加入bo_list中
-                        if if_show:
-                            print('起始位：'+str(sg_dict['start_bit']), end=' ')
-                            print('长度：' + str(sg_dict['signal_size']), end=' ')
-                            print('格式：' + str(sg_dict['byte_order']), end=' ')
-                            print('是否有符号：' + str(sg_dict['value_type']), end=' ')
-                            print('factor：' + str(sg_dict['factor']), end=' ')
-                            print('offset：' + str(sg_dict['offset']), end=' ')
-                            print('最小值：' + str(sg_dict['minimum']), end=' ')
-                            print('最大值：' + str(sg_dict['maximum']), end=' ')
-                            print('单位：' + sg_dict['unit'], end=' ')
-                            print('接收单元：' + sg_dict['receiver'], end=' ')
-                            print()
-
-                        ##对SG_LIST的操作
+                    if line_list[i+1] != "\n":
                         i += 1
-                        if len(line_list[i].split()) == 0:      #不是SGlist 则break！
+                        while line_list[i].split()[0] == str_of_SG : #循环读取SGlist
+                            sg_list = line_list[i].split()
                             if if_show:
+                                print(sg_list)
+                            ##对SG_LIST的操作
+                            self.num_of_sg += 1
+                            sg_dict = {}
+                            sg_dict['type'] = sg_list[location_of_sg_type]
+                            sg_dict['signal_name'] = sg_list[location_of_sg_name]
+                            end_of_start = sg_list[location_of_sg_s_bit_size].find('|')
+                            end_of_size = sg_list[location_of_sg_s_bit_size].find('@')
+                            sg_dict['start_bit'] = int(sg_list[location_of_sg_s_bit_size][0:end_of_start])
+                            sg_dict['signal_size'] = int(sg_list[location_of_sg_s_bit_size][end_of_start+1:end_of_size])
+                            sg_dict['byte_order'] = int(sg_list[location_of_sg_s_bit_size][end_of_size+1])
+                            sg_dict['value_type'] = sg_list[location_of_sg_s_bit_size][end_of_size+2]
+                            if sg_dict['value_type'] == '+':
+                                sg_dict['value_type'] = 0
+                            else:
+                                sg_dict['value_type'] = 1
+                            end_of_factor = sg_list[location_of_sg_factor].find(',')
+                            end_of_offset = sg_list[location_of_sg_factor].find(')')
+                            sg_dict['factor'] = float(sg_list[location_of_sg_factor][1:end_of_factor])
+                            sg_dict['offset'] = float(sg_list[location_of_sg_factor][end_of_factor+1:end_of_offset])
+                            end_of_min = sg_list[location_of_sg_max_min].find('|')
+                            end_of_max = sg_list[location_of_sg_max_min].find(']')
+                            sg_dict['minimum'] = float(sg_list[location_of_sg_max_min][1:end_of_min])
+                            sg_dict['maximum'] = float(sg_list[location_of_sg_max_min][end_of_min+1:end_of_max])
+                            sg_dict['unit'] = re.sub('"', '', sg_list[location_of_sg_unit])
+                            sg_dict['receiver'] = sg_list[location_of_sg_receiver]
+                            bo_list.append(sg_dict)     #加入bo_list中
+                            if if_show:
+                                print('起始位：'+str(sg_dict['start_bit']), end=' ')
+                                print('长度：' + str(sg_dict['signal_size']), end=' ')
+                                print('格式：' + str(sg_dict['byte_order']), end=' ')
+                                print('是否有符号：' + str(sg_dict['value_type']), end=' ')
+                                print('factor：' + str(sg_dict['factor']), end=' ')
+                                print('offset：' + str(sg_dict['offset']), end=' ')
+                                print('最小值：' + str(sg_dict['minimum']), end=' ')
+                                print('最大值：' + str(sg_dict['maximum']), end=' ')
+                                print('单位：' + sg_dict['unit'], end=' ')
+                                print('接收单元：' + sg_dict['receiver'], end=' ')
                                 print()
-                            break
-                        elif line_list[i].split()[0] != str_of_SG:
-                            break
+
+                            ##对SG_LIST的操作
+                            i += 1
+                            if len(line_list[i].split()) == 0:      #不是SGlist 则break！
+                                if if_show:
+                                    print()
+                                break
+                            elif line_list[i].split()[0] != str_of_SG:
+                                break
                     self.dbc_list.append(bo_list)
                     if if_show:
                         print("DBC数量:" + str(self.num_of_bo))
