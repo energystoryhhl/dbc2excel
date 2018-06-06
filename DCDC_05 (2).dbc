@@ -1,0 +1,334 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Master Charger
+VAL_TABLE_ Betriebsarten 16384 "PFC_manueller_peak_curr" 4100 "PFC_Regler_Zweigvertauscht" 768 "PFC_und_DCDC_manuel" 516 "PFC_Regler_DCDC_manuel" 512 "DCDC_manueller_shift" 256 "PFC_manueller_Duty_Cycle" 12 "PFC_und_DCDC_Regler_aktiv" 8 "DCDC_Regler_aktiv" 4 "PFC_Regler_aktiv" 0 "Alles_Aus" ;
+VAL_TABLE_ ParamModeTab 1 "Write Parameter" 0 "Read Parameter" ;
+VAL_TABLE_ ErrorDescription 0 "NO_ERROR" 268435456 "CHRGRLOINF_ERRBIT_NOMASTERENA" 134217728 "CHRGRLOINF_ERRBIT_CANDATA" 67108864 "CHRGRLOINF_ERRBIT_HWERROR" 33554432 "CHRGRLOINF_ERRBIT_TEMPHIGHRED" 16777216 "CHRGRLOINF_ERRBIT_TEMPHIGHOFF" 4194304 "CHRGRLOINF_ERRBIT_STOUTGRAD" 2097152 "CHRGRLOINF_ERRBIT_STOUTSHRT" 1048576 "CHRGRLOINF_ERRBIT_STOUTOPN" 524288 "CHRGRLOINF_ERRBIT_IOUTLOW" 262144 "CHRGRLOINF_ERRBIT_IOUTHIGH" 131072 "CHRGRLOINF_ERRBIT_UOUTLOW" 65536 "CHRGRLOINF_ERRBIT_UOUTHIGH" 32768 "CHRGRLOINF_ERRBIT_IDCDCLOW" 16384 "CHRGRLOINF_ERRBIT_IDCDCHIGH" 8192 "CHRGRLOINF_ERRBIT_UDCDCLOW" 4096 "CHRGRLOINF_ERRBIT_UDCDCHIGH" 256 "CHRGRLOINF_ERRBIT_UIRCDRP" 32 "CHRGRLOINF_ERRBIT_IINPLOW" 16 "CHRGRLOINF_ERRBIT_IINPHIGH" 2 "CHRGRLOINF_ERRBIT_UINPLOW" 1 "CHRGRLOINF_ERRBIT_UINPHIGH" ;
+VAL_TABLE_ DeratingReason 4 "Overtemperature" 2 "Overcurrent" 1 "overvoltage" 0 "no derating reason" ;
+VAL_TABLE_ chargingMode 4 "Power" 2 "voltage" 1 "Current" 0 "invalid" ;
+VAL_TABLE_ DCDCMode 2 "Steuerung_Vorgabewert" 1 "Regelung_Aktiv" 0 "Standby" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ PRM_dilLVDCDCStrtRamp : 0|16@1- (0.003906,0) [0|20] "A/s" Vector__XXX
+ SG_ PRM_iHVDCDCPeakMax : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_iLVDCDCPrimaryMax : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_uOutSlopePosMin : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uOutSlopePosMax : 0|16@1- (0.03125,0) [0|600] "v" Vector__XXX
+ SG_ LoCom_xSwVersion : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ reservedByte : 0|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ Cha_PoutLim : 0|8@1+ (0.1,0) [0|25.5] "KW" Vector__XXX
+ SG_ Cha_Pout : 0|8@1+ (0.1,0) [0|25.5] "KW" Vector__XXX
+ SG_ Cha_PoutMax : 0|8@1+ (0.1,0) [0|25.5] "KW" Vector__XXX
+ SG_ Cha_Uout : 0|8@1+ (2,0) [0|510] "V" Vector__XXX
+ SG_ Cha_UoutMax : 0|8@1+ (2,0) [0|510] "V" Vector__XXX
+ SG_ Cha_Iout : 0|8@1+ (0.1,0) [0|25.5] "A" Vector__XXX
+ SG_ Cha_IoutMax : 0|8@1+ (0.1,0) [0|25.5] "A" Vector__XXX
+ SG_ PRM_facPFCNonContPreControl : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "-" Vector__XXX
+ SG_ PRM_facPFCNonContLimitCalc : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "-" Vector__XXX
+ SG_ PRM_numBlank_PFC : 0|16@1+ (1,0) [0|200] "16,6ns" Vector__XXX
+ SG_ PRM_numBlank_DCDC : 0|16@1+ (1,0) [0|200] "16,6ns" Vector__XXX
+ SG_ PRM_facLVDCDCPrimCtlIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facLVDCDCPrimCtlProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+ SG_ PRM_iPFCCtlParamSwt : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_uPFCCtlParamSwt : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_facPFCVltgCtlIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperVms" Vector__XXX
+ SG_ PRM_facPFCVltgCtlProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperV" Vector__XXX
+ SG_ PRM_facPFCCurrCtlHiVHiCurIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facPFCCurrCtlHiVHiCurProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+ SG_ PRM_facPFCCurrCtlLoVHiCurIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facPFCCurrCtlLoVHiCurProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+ SG_ PRM_facPFCCurrCtlLHiVLoCurIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facPFCCurrCtlHiVLoCurProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+ SG_ PRM_facPFCCurrCtlLoVLoCurIntg : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facPFCCurrCtlLoVLoCurProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+ SG_ PRM_stGPTA32_48 : 0|16@1+ (1,0) [0|65535] "-" Vector__XXX
+ SG_ PRM_stGPTA16_31 : 0|16@1+ (1,0) [0|65535] "-" Vector__XXX
+ SG_ PRM_iPFC2BranchMin : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_iPFC1BranchMax : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_dilDCDCStrtRamp : 0|16@1- (0.003906,0) [0|20] "A/s" Vector__XXX
+ SG_ PRM_iPFCStrtMax : 0|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_uInrushMax : 0|16@1- (0.03125,0) [0|600] "v" Vector__XXX
+ SG_ PRM_iInputMax : 0|16@1- (0.003906,0) [0|25] "A" Vector__XXX
+ SG_ PRM_stGPTA0_15 : 0|16@1+ (1,0) [0|65535] "-" Vector__XXX
+ SG_ PRM_iPeakPFC2 : 0|16@1- (0.01075,0) [0|20] "A" Vector__XXX
+ SG_ PRM_iPeakPFC1 : 0|16@1- (0.01075,0) [0|20] "A" Vector__XXX
+ SG_ PRM_numSmplADCShft_PFC : 0|16@1- (1,0) [-80|80] "16,6ns" Vector__XXX
+ SG_ PRM_numSmplADCShft_DCDC : 0|16@1- (1,0) [-80|80] "16,6ns" Vector__XXX
+ SG_ PRM_DutyCycleLVDCDC : 0|16@1- (0.02442,0) [0|80] "%" Vector__XXX
+ SG_ PRM_uDCLinkMax : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uDCLinkMin : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uDCLinkPFCFastOff : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uDCLinkSetval : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_DutyCyclePFC2 : 0|16@1- (0.02442,0) [0|100] "%" Vector__XXX
+ SG_ PRM_DutyCyclePFC1 : 0|16@1- (0.02442,0) [0|100] "%" Vector__XXX
+ SG_ PRM_PFC_Startuptime : 0|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ PRM_Betriebsart : 0|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ LoData_uInpEfc : 0|16@1- (0.031,0) [-1015|1015] "V" Vector__XXX
+ SG_ ChaMeasInMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ChaCMD : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ChaCoMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ChaDCLink_LV_CurrentDemand : 0|16@1- (0.0039,0) [-127.7952|127.7913] "A" Vector__XXX
+ SG_ ChaModeExDes : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ChaDemandMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ LoData_tDSP : 0|16@1- (0.18,0) [-315|315] "°C" Vector__XXX
+ SG_ PRM_stFaultMskHigh : 0|16@1+ (1,0) [0|65535] "setBit_to_enable_Fault" Vector__XXX
+ SG_ PRM_stFaultMskLow : 0|16@1+ (1,0) [0|65535] "setBit_to_enable_Fault" Vector__XXX
+ SG_ I_Out : 0|16@0- (0.08,0) [-2621.44|2621.36] "A" Vector__XXX
+ SG_ U_Out : 0|16@0- (0.0081967213114754,0) [-268.59016393443|268.58196721311] "V" Vector__XXX
+
+BO_ 2035 EMC_Jitter: 8 Vector__XXX
+ SG_ JitterAmplitude : 23|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ JitterFrequenz : 7|16@0+ (1,0) [0|0] "Hz" Vector__XXX
+
+BO_ 516 DCDCMeas1: 8 Vector__XXX
+ SG_ I_In_Trafo : 7|16@0- (1,0) [-32768|32767] "A" Vector__XXX
+ SG_ LoData_tDBC : 55|16@0- (-0.0328,127.4) [-50|150] "°C" Vector__XXX
+ SG_ U_In : 23|16@0- (0.10752688,0) [-3523.44080384|3523.33327696] "V" Vector__XXX
+ SG_ SnubberSpannung : 39|16@0- (0.0155,0) [-507.904|507.8885] "" Vector__XXX
+
+BO_ 1911 AnzTestWerte: 8 Vector__XXX
+ SG_ AnzTestPhaseStimu : 48|16@1- (0.02,0) [0|0] "" Vector__XXX
+ SG_ AnzTestPhase : 32|16@1- (0.02,0) [0|0] "" Vector__XXX
+ SG_ AnzTestAmplitude : 16|16@1- (0.001,0) [0|0] "" Vector__XXX
+ SG_ AnzTestfrequenz : 0|16@1- (0.5,0) [0|0] "" Vector__XXX
+
+BO_ 2034 Testresult: 8 Vector__XXX
+ SG_ TestSumStimImag : 55|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ TestSumStimReal : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ TestSumFBImag : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ TestSumFBReal : 7|16@0- (1,0) [0|0] "" Vector__XXX
+
+BO_ 2033 Testansteuerung: 8 Vector__XXX
+ SG_ Testamplitude : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Testfrequenz : 7|32@0- (0.00149,0) [0|0] "" Vector__XXX
+
+BO_ 2032 Messwerte: 8 Vector__XXX
+ SG_ Wert3 : 55|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Wert2 : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Wert1 : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Wert0 : 7|16@0- (1,0) [0|0] "" Vector__XXX
+
+BO_ 1293 PRM_DCDC_PrimCurr_iMax: 8 Vector__XXX
+ SG_ PRM_iOutMax : 48|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_iHVDCDCPrimaryMax : 32|16@1- (0.003906,0) [0|20] "A" Vector__XXX
+ SG_ PRM_facHVDCDCPrimCtlIntg : 16|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perAms" Vector__XXX
+ SG_ PRM_facHVDCDCPrimCtlProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "%perA" Vector__XXX
+
+BO_ 1292 PRM_DCDC_Vltg_Curr: 8 Vector__XXX
+ SG_ PRM_facHVDCDCVltgCtlIntg : 48|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperVms" Vector__XXX
+ SG_ PRM_facHVDCDCVltgCtlProp : 32|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperV" Vector__XXX
+ SG_ PRM_facHVDCDCCurrCtlIntg : 16|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperAms" Vector__XXX
+ SG_ PRM_facHVDCDCCurrCtlProp : 0|16@1- (0.00024414,0) [-7.99997952|7.99973538] "AperA" Vector__XXX
+
+BO_ 1288 PRM_shift_DiaMsk: 8 Vector__XXX
+ SG_ PRM_enaSynRectOvlp : 32|8@1+ (1,0) [0|40] "setBit_to_enable_Fault" Vector__XXX
+ SG_ PRM_numSynRectOvlp1 : 48|8@1+ (1,0) [0|40] "setBit_to_enable_Fault" Vector__XXX
+ SG_ PRM_numSynRectOvlp2 : 56|8@1+ (1,0) [0|40] "setBit_to_enable_Fault" Vector__XXX
+ SG_ PRM_iPeakDCDC : 16|16@1- (0.00564,0) [0|20] "A" Vector__XXX
+ SG_ PRM_PhaseShiftDCDC : 0|16@1- (0.02442,0) [0|100] "%" Vector__XXX
+
+BO_ 1285 PRM_uMaxValues: 8 Vector__XXX
+ SG_ PRM_uOutMax : 48|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uOutMin : 32|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uInputMin : 16|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+ SG_ PRM_uInputMax : 0|16@1- (0.03125,0) [0|600] "V" Vector__XXX
+
+BO_ 1283 PRM_DeadBand: 8 Vector__XXX
+ SG_ PRM_facDeadPwr : 48|16@1- (0.00024414,0) [-7.99997952|7.99973538] "Faktor" Vector__XXX
+ SG_ PRM_numDeadOffBase : 32|16@1- (1,0) [0|100] "8,8ns" Vector__XXX
+ SG_ PRM_numDeadOnBase : 16|16@1- (1,0) [-32768|32767] "8,8ns" Vector__XXX
+ SG_ PRM_numDeadBdOfset : 0|16@1- (1,0) [-10|10] "8,8ns" Vector__XXX
+
+BO_ 2047 Parameter_Read: 8 Vector__XXX
+ SG_ Parameter2 : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Parameter1 : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ PID : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2046 Parameter_Write: 8 Vector__XXX
+ SG_ ParameterMode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Parameter2 : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Parameter1 : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ PID : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1537 ChargerBootDataRec: 8 Vector__XXX
+
+BO_ 1536 ChargerBootControl: 8 Vector__XXX
+
+BO_ 767 Boot_200: 8 Vector__XXX
+
+BO_ 1042 BootStartProgSes: 8 Vector__XXX
+ SG_ ChrgrLoInf_adrDestStart : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ChrgrLoInf_cntrWordRec : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ChrgrLoInf_cntrMsgRec : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1538 ChargerBootAnswer: 8 Vector__XXX
+
+BO_ 1043 Boot_ProgSession: 8 Vector__XXX
+ SG_ MsgRec : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1041 BootReadStart: 8 Vector__XXX
+
+BO_ 1792 DCDCStateSlow: 8 Charger
+ SG_ LoCom_xCanMatrix : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ LoData_xCrcResult : 32|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ ChaStaSlowMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 769 ChargerMaxValues: 4 Master
+ SG_ LoCom_iInpMax : 16|16@1- (0.0078,0) [-255.5904|255.5826] "A" Vector__XXX
+ SG_ ChaMaxValMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 515 DCDCMeas: 8 Charger
+ SG_ LoCom_iOutHWFilt : 23|16@0- (0.0078125,0) [-256|255.9921875] "A" Vector__XXX
+ SG_ LoCom_iOutShunt : 7|16@0- (0.0078125,0) [-256|255.9921875] "A" Vector__XXX
+ SG_ Supply_15V : 55|16@0- (0.0089285714285714,0) [-292.57142857143|292.5625] "V" Vector__XXX
+ SG_ U_Out_Verpol : 39|16@0- (1,0) [-32768|32767] "V" Vector__XXX
+
+BO_ 514 DCDC_Meas_DC_Link: 8 Charger
+ SG_ LoData_uDCLink : 55|16@0- (0.03125,0) [-1024|1023.96875] "V" Vector__XXX
+ SG_ LoData_iInAvrg : 39|16@0- (0.0078125,0) [-256|255.9921875] "A" Vector__XXX
+ SG_ LoData_iInPeak : 23|16@0- (0.0078125,0) [-256|255.9921875] "A" Vector__XXX
+ SG_ ChaMeasDCLinkMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 513 DCDC_Meas_Out: 8 Charger
+ SG_ LoData_uOut : 55|16@0- (0.016,0) [-524.288|524.272] "V" Vector__XXX
+ SG_ LoData_iOut : 39|16@0- (0.0078125,0) [-256|255.9921875] "A" Vector__XXX
+ SG_ LoData_rPhaseshift : 23|16@0- (0.0244140625,0) [-800|799.9755859375] "%" Vector__XXX
+ SG_ ChaMeasOutMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 257 DCDCStateFast: 8 Charger
+ SG_ ChaStaMsgCntr : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ChaErrDescr : 39|32@0+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ ChaMode : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 256 DCDC_Control: 8 Master
+ SG_ LoCom_uOutDem : 39|16@0- (0.016,0) [-524.288|524.272] "V" Vector__XXX
+ SG_ LoCom_pOutDem : 55|16@0- (1,0) [-32768|32767] "W" Vector__XXX
+ SG_ LoCom_iOutDem : 23|16@0- (0.0078,0) [-255.5904|255.5826] "A" Vector__XXX
+ SG_ DCDCModeDes : 0|8@1+ (1,0) [0|3] ""  Charger
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ SG_ 3221225472 PRM_dilLVDCDCStrtRamp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iHVDCDCPeakMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iLVDCDCPrimaryMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uOutSlopePosMin "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uOutSlopePosMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 Cha_PoutLim "Current max. Limit of Output Power";
+CM_ SG_ 3221225472 Cha_Pout "Output Power";
+CM_ SG_ 3221225472 Cha_PoutMax "max. available Output Power Charger";
+CM_ SG_ 3221225472 Cha_Uout "Output Voltage";
+CM_ SG_ 3221225472 Cha_UoutMax "max. available Output Voltage Charger";
+CM_ SG_ 3221225472 Cha_Iout "Output Current";
+CM_ SG_ 3221225472 Cha_IoutMax "max. available Output Current Charger";
+CM_ SG_ 3221225472 PRM_facPFCNonContPreControl "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCNonContLimitCalc "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_numBlank_PFC "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_numBlank_DCDC "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_facLVDCDCPrimCtlIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facLVDCDCPrimCtlProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iPFCCtlParamSwt "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uPFCCtlParamSwt "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCVltgCtlIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCVltgCtlProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlHiVHiCurIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlHiVHiCurProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlLoVHiCurIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlLoVHiCurProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlLHiVLoCurIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlHiVLoCurProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlLoVLoCurIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_facPFCCurrCtlLoVLoCurProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_stGPTA32_48 "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_stGPTA16_31 "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_iPFC2BranchMin "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iPFC1BranchMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_dilDCDCStrtRamp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iPFCStrtMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uInrushMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_iInputMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_stGPTA0_15 "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_iPeakPFC2 "Quantisierung: 1/(256 /0.688/4)";
+CM_ SG_ 3221225472 PRM_iPeakPFC1 "Quantisierung: 1/(256 /0.688/4)";
+CM_ SG_ 3221225472 PRM_numSmplADCShft_PFC "Shift Abtastzeitpunkt in ticks (16,6ns) PFC";
+CM_ SG_ 3221225472 PRM_numSmplADCShft_DCDC "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_uDCLinkMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uDCLinkMin "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uDCLinkPFCFastOff "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 PRM_uDCLinkSetval "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 3221225472 ChaCMD "Charger Command (Reset, CRC_Check...)";
+CM_ SG_ 3221225472 LoData_tDSP "DSP Temperatur ";
+CM_ SG_ 3221225472 PRM_stFaultMskHigh "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 PRM_stFaultMskLow "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 3221225472 I_Out "power electronic temperatur 1";
+CM_ SG_ 3221225472 U_Out "power electronic temperatur 2
+";
+CM_ SG_ 516 I_In_Trafo "power electronic temperatur 1";
+CM_ SG_ 516 LoData_tDBC "DSP Temperatur ";
+CM_ SG_ 516 U_In "power electronic temperatur 3";
+CM_ SG_ 1293 PRM_iOutMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1293 PRM_iHVDCDCPrimaryMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1293 PRM_facHVDCDCPrimCtlIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1293 PRM_facHVDCDCPrimCtlProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1292 PRM_facHVDCDCVltgCtlIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1292 PRM_facHVDCDCVltgCtlProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1292 PRM_facHVDCDCCurrCtlIntg "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1292 PRM_facHVDCDCCurrCtlProp "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1288 PRM_enaSynRectOvlp "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 1288 PRM_numSynRectOvlp1 "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 1288 PRM_numSynRectOvlp2 "Shift Abtastzeitpunkt in ticks (16,6ns) DCDC";
+CM_ SG_ 1288 PRM_iPeakDCDC "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1285 PRM_uOutMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1285 PRM_uOutMin "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1285 PRM_uInputMin "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1285 PRM_uInputMax "Quantisierung: 1/(256 /0.361/4)";
+CM_ SG_ 1283 PRM_facDeadPwr "Leistung in Watt mal Faktor gibt offset in 8,8 ns Ticks";
+CM_ SG_ 1283 PRM_numDeadOffBase "Shift Abtastzeitpunkt in ticks (16,6ns) PFC";
+CM_ SG_ 1283 PRM_numDeadOnBase "Shift Abtastzeitpunkt in ticks (16,6ns) PFC";
+CM_ SG_ 1283 PRM_numDeadBdOfset "Shift Abtastzeitpunkt in ticks (16,6ns) PFC";
+CM_ SG_ 769 LoCom_iInpMax "max. allowed Input Current";
+CM_ SG_ 515 Supply_15V "power electronic temperatur 3";
+CM_ SG_ 515 U_Out_Verpol "power electronic temperatur 3";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+VAL_ 3221225472 PRM_Betriebsart 16384 "PFC_manueller_peak_curr" 4100 "PFC_Regler_Zweigvertauscht" 768 "PFC_und_DCDC_manuel" 516 "PFC_Regler_DCDC_manuel" 512 "DCDC_manueller_shift" 256 "PFC_manueller_Duty_Cycle" 12 "PFC_und_DCDC_Regler_aktiv" 8 "DCDC_Regler_aktiv" 4 "PFC_Regler_aktiv" 0 "Alles_Aus" ;
+VAL_ 3221225472 ChaModeExDes 64 "Failsafe" 32 "Derating" 16 "Failsafe" 8 "Shutdown" 4 "Prepare_Charging" 2 "Charging" 1 "Standby" 0 "Invalid" ;
+VAL_ 2046 ParameterMode 1 "Write Parameter" 0 "Read Parameter" ;
+VAL_ 257 ChaErrDescr 0 "NO_ERROR" 268435456 "CHRGRLOINF_ERRBIT_NOMASTERENA" 134217728 "CHRGRLOINF_ERRBIT_CANDATA" 67108864 "CHRGRLOINF_ERRBIT_HWERROR" 33554432 "CHRGRLOINF_ERRBIT_TEMPHIGHRED" 16777216 "CHRGRLOINF_ERRBIT_TEMPHIGHOFF" 4194304 "CHRGRLOINF_ERRBIT_STOUTGRAD" 2097152 "CHRGRLOINF_ERRBIT_STOUTSHRT" 1048576 "CHRGRLOINF_ERRBIT_STOUTOPN" 524288 "CHRGRLOINF_ERRBIT_IOUTLOW" 262144 "CHRGRLOINF_ERRBIT_IOUTHIGH" 131072 "CHRGRLOINF_ERRBIT_UOUTLOW" 65536 "CHRGRLOINF_ERRBIT_UOUTHIGH" 32768 "CHRGRLOINF_ERRBIT_IDCDCLOW" 16384 "CHRGRLOINF_ERRBIT_IDCDCHIGH" 8192 "CHRGRLOINF_ERRBIT_UDCDCLOW" 4096 "CHRGRLOINF_ERRBIT_UDCDCHIGH" 256 "CHRGRLOINF_ERRBIT_UIRCDRP" 32 "CHRGRLOINF_ERRBIT_IINPLOW" 16 "CHRGRLOINF_ERRBIT_IINPHIGH" 2 "CHRGRLOINF_ERRBIT_UINPLOW" 1 "CHRGRLOINF_ERRBIT_UINPHIGH" ;
+VAL_ 257 ChaMode 64 "Failsafe" 32 "Derating" 16 "Failsafe" 8 "Shutdown" 4 "Prepare_Charging" 2 "Charging" 1 "Standby" 0 "Invalid" ;
+VAL_ 256 DCDCModeDes 2 "Steuerung_Vorgabewert" 1 "Regelung_Aktiv" 0 "Standby" ;
+

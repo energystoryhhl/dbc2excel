@@ -1,0 +1,94 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: New_Node_1
+VAL_TABLE_ DCDCErrorCode 9 "保留" 8 "自定义 " 7 "输出短路" 6 "低温保护" 5 "高温保护" 4 "输出欠压" 3 "输出过压" 2 "输入欠压" 1 "输入过压" 0 "保留" ;
+VAL_TABLE_ DCDCErrorStauts 1 "Error" 0 "No Error" ;
+VAL_TABLE_ DCDC_Running_Permission 1 "Permission" 0 "Not permission" ;
+VAL_TABLE_ DCDC_running 1 "Working" 0 "Not Working" ;
+VAL_TABLE_ DC_DC_Enable 1 "enable" 0 "disable" ;
+
+
+BO_ 336 New_Message_3: 8 Vector__XXX
+ SG_ low_v_output : 16|16@1+ (0.38,0) [0|0] "mV" Vector__XXX
+ SG_ input_voltage : 0|16@1+ (0.0076,0) [0|0] "V" Vector__XXX
+
+BO_ 328 MCU_2: 8 Vector__XXX
+ SG_ DCDC_Input_Voltage : 55|9@1+ (1,0) [0|0] "V" Vector__XXX
+ SG_ DCDC_Input_Current : 51|4@1+ (1,0) [0|0] "A" Vector__XXX
+ SG_ DCDCErrorCode : 47|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DCDCErrorStauts : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DCDC_Running_Permission : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DCDC_running : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LiveCounter_MCU_2 : 40|4@1+ (1,0) [0|0] "Pulse" Vector__XXX
+ SG_ DCDC_Temperature : 32|8@1+ (1,0) [0|0] "摄氏度" Vector__XXX
+ SG_ DCDC_Output_Power : 24|8@1+ (10,0) [0|0] "W" Vector__XXX
+ SG_ DCDC_Output_Voltage : 16|8@1+ (0.1,0) [0|0] "V" Vector__XXX
+ SG_ DCDC_Output_Current : 8|8@1+ (1,0) [0|0] "A" Vector__XXX
+ SG_ Checksum_MCU_2 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 340 HCU_5: 8 Vector__XXX
+ SG_ DC_DC_Enable : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DC_Output_Voltage_Request : 48|8@1+ (0.1,0) [0|25.5] "V" Vector__XXX
+
+
+
+EV_ DC_DC_Enable: 0 [0|0] "" 0 1 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ DC_Output_Voltage_Request_sender: 0 [0|0] "" 0 2 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ DC_Output_Voltage_Request: 1 [11|16] "" 13 3 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+VAL_ 328 DCDCErrorCode 9 "保留" 8 "自定义 " 7 "输出短路" 6 "低温保护" 5 "高温保护" 4 "输出欠压" 3 "输出过压" 2 "输入欠压" 1 "输入过压" 0 "保留" ;
+VAL_ 328 DCDCErrorStauts 1 "Error" 0 "No Error" ;
+VAL_ 328 DCDC_Running_Permission 1 "Permission" 0 "Not permission" ;
+VAL_ 328 DCDC_running 1 "Working" 0 "Not Working" ;
+VAL_ 340 DC_DC_Enable 1 "enable" 0 "disable" ;
+VAL_ DC_DC_Enable 1 "enable" 0 "disable" ;
+
