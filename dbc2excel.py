@@ -667,7 +667,7 @@ class DbcLoad(object):
     def dbc2excel(self, filepath):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(1)
+        self.parse_dbc(0)
         self.dbc_excel_gen()
 
 

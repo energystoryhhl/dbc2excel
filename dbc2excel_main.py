@@ -12,15 +12,19 @@ class MyFrame(wx.Frame):
         #self.control = wx.TextCtrl(self, style=wx.TE_MULTILINE)
 
         #静态文字
-        self.quote = wx.StaticText(self, label="选择dbc文件 :", pos=(20, 30))
+        self.quote = wx.StaticText(self, label="Author: PJ/48V 黄洪磊\n", pos=(380, 240))
         #控制台窗口
         self.logger = wx.TextCtrl(self, pos=(5, 300), size=(580, 130), style=wx.TE_MULTILINE | wx.TE_READONLY)
 
         # A button
-        self.button =wx.Button(self, label="生成Excel文件", pos=(100, 80))
+        self.button =wx.Button(self, label="生成Excel文件", pos=(10, 150),size=(200,100))
         self.Bind(wx.EVT_BUTTON, self.create_excel,self.button)
         # B button
-        b = wx.Button(self,-1,u"选择dbc文件",pos=(100, 20))
+        b = wx.Button(self,-1,u"选择dbc文件",pos=(10, 20),size=(200,100))
+        self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
+        # c button
+        pic = wx.Image("source/a.bmp", wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        c = wx.BitmapButton(self,-1,pic,pos=(250, 20),size=(290,150))
         self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
 
         # Setting up the menu.
@@ -40,6 +44,8 @@ class MyFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnAbout, menuAbout)
         self.Bind(wx.EVT_MENU, self.OnExit, menuExit)
 
+        self.logger.AppendText("Dbc转Excel工具仍在不断完善中,有任何问题请将无法转换的dbc文件发送至\nint.honglei.huang@uaes.com\n")
+
 
 
         self.Show(True)
@@ -54,7 +60,7 @@ class MyFrame(wx.Frame):
         self.Close(True)  # Close the frame.
 
     def create_excel(self, event):
-        self.logger.AppendText(" \nLoad DBC File \n" )
+        self.logger.AppendText(" \n载入DBC文件完成\n" )
         dbc = d2e.DbcLoad(self.path)
         self.logger.AppendText(" 生成文件中！稍等... \n")
         dbc.dbc2excel(self.path)
@@ -68,7 +74,15 @@ class MyFrame(wx.Frame):
             return
         self.path = fileDialog.GetPath()
         self.logger.SetLabel('>>>选择文件：'+self.path)
-
+    def OnEraseBack(self,event):
+        dc = event.GetDC()
+        if not dc:
+            dc = wx.ClientDC(self)
+            rect = self.GetUpdateRegion().GetBox()
+            dc.SetClippingRect(rect)
+        dc.Clear()
+        bmp = wx.Bitmap("a.jpg")
+        dc.DrawBitmap(bmp, 0, 0)
 
     #################
 if __name__ == "__main__":
