@@ -19,10 +19,12 @@ location_of_sg_max_min = 5
 location_of_sg_unit = 6
 location_of_sg_receiver = 7
 
+if_show_global = 0
+
 excel_page_name = "Matrix"
 tittle_row = 0
 signal_name_col = 6
-val_description_max_number = 70
+
 excel_tittle = ('Msg Name\n报文名称', 'Msg Type\n报文类型', 'Msg ID\n报文标识符', 'Msg Send Type\n报文发送类型',
                 'Msg Cycle Time (ms)\n报文周期时间', 'Msg Length (Byte)\n报文长度', 'Signal Name\n信号名称',
                 'Signal Description\n信号描述', "Byte Order\n排列格式(Intel/Motorola)", "Start Byte\n起始字节",
@@ -89,7 +91,8 @@ class DbcLoad(object):
     def __init__(self, dbc_name_in):
         self.dbc_fd = open(dbc_name_in, 'r')
         if self.dbc_fd.readable():
-            print('>>>DBC File loaded!')
+            if(if_show_global):
+                print('>>>DBC File loaded!')
             self.num_of_bo = 0
             self.num_of_sg = 0
             self.dbc_list = []
@@ -97,8 +100,15 @@ class DbcLoad(object):
             self.dbc_cycle_time = {}
             self.tran_recv = set()
             self.tran_recv_list = []
+            ##excel生成条件变量
+            self.if_sig_desc = True
+            self.if_sig_val_desc = True
+            self.val_description_max_number = 70
+            self.if_start_val = True
+            self.if_recv_send = True
         else:
-            print("DEC file load failed!")
+            if (if_show_global):
+                print("DEC file load failed!")
 
     def cm_put(self, canid, sg_name, comment):
         dbc_length = len(self.dbc_list)
@@ -142,7 +152,12 @@ class DbcLoad(object):
         return ret
 
 
-    def parse_dbc(self, if_show):
+    def parse_dbc(self, if_show, if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send):
+        self.if_sig_desc = if_sig_desc
+        self.if_sig_val_desc = if_sig_val_desc
+        self.val_description_max_number = val_description_max_number
+        self.if_start_val = if_start_val
+        self.if_recv_send = if_recv_send
         line_list = self.dbc_fd.readlines()
         #读取cycletime
         i = 0
@@ -152,7 +167,8 @@ class DbcLoad(object):
                 if line_list[i].split()[0] == 'BA_' and line_list[i].split()[1] == '"GenMsgCycleTime"':
                     #查找到了相应的cycletime的line
                     self.dbc_cycle_time[line_list[i].split()[3]] = int(re.sub(';', '', line_list[i].split()[4]))
-                    print(line_list[i].split())
+                    if (if_show_global):
+                        print(line_list[i].split())
             i += 1
 
         #读取具体讯息
@@ -191,26 +207,30 @@ class DbcLoad(object):
                             sg_dict = {}
                             sg_dict['type'] = sg_list[location_of_sg_type]
                             sg_dict['signal_name'] = sg_list[location_of_sg_name]
-                            end_of_start = sg_list[location_of_sg_s_bit_size].find('|')
-                            end_of_size = sg_list[location_of_sg_s_bit_size].find('@')
-                            sg_dict['start_bit'] = int(sg_list[location_of_sg_s_bit_size][0:end_of_start])
-                            sg_dict['signal_size'] = int(sg_list[location_of_sg_s_bit_size][end_of_start+1:end_of_size])
-                            sg_dict['byte_order'] = int(sg_list[location_of_sg_s_bit_size][end_of_size+1])
-                            sg_dict['value_type'] = sg_list[location_of_sg_s_bit_size][end_of_size+2]
+                            if(sg_list[2] != ":"):
+                                offset = 1
+                            else:
+                                offset = 0
+                            end_of_start = sg_list[location_of_sg_s_bit_size+offset].find('|')
+                            end_of_size = sg_list[location_of_sg_s_bit_size+offset].find('@')
+                            sg_dict['start_bit'] = int(sg_list[location_of_sg_s_bit_size+offset][0:end_of_start])
+                            sg_dict['signal_size'] = int(sg_list[location_of_sg_s_bit_size+offset][end_of_start+1:end_of_size])
+                            sg_dict['byte_order'] = int(sg_list[location_of_sg_s_bit_size+offset][end_of_size+1])
+                            sg_dict['value_type'] = sg_list[location_of_sg_s_bit_size+offset][end_of_size+2]
                             if sg_dict['value_type'] == '+':
                                 sg_dict['value_type'] = 0
                             else:
                                 sg_dict['value_type'] = 1
-                            end_of_factor = sg_list[location_of_sg_factor].find(',')
-                            end_of_offset = sg_list[location_of_sg_factor].find(')')
-                            sg_dict['factor'] = float(sg_list[location_of_sg_factor][1:end_of_factor])
-                            sg_dict['offset'] = float(sg_list[location_of_sg_factor][end_of_factor+1:end_of_offset])
-                            end_of_min = sg_list[location_of_sg_max_min].find('|')
-                            end_of_max = sg_list[location_of_sg_max_min].find(']')
-                            sg_dict['minimum'] = float(sg_list[location_of_sg_max_min][1:end_of_min])
-                            sg_dict['maximum'] = float(sg_list[location_of_sg_max_min][end_of_min+1:end_of_max])
-                            sg_dict['unit'] = re.sub('"', '', sg_list[location_of_sg_unit])
-                            sg_dict['receiver'] = sg_list[location_of_sg_receiver]
+                            end_of_factor = sg_list[location_of_sg_factor+offset].find(',')
+                            end_of_offset = sg_list[location_of_sg_factor+offset].find(')')
+                            sg_dict['factor'] = float(sg_list[location_of_sg_factor+offset][1:end_of_factor])
+                            sg_dict['offset'] = float(sg_list[location_of_sg_factor+offset][end_of_factor+1:end_of_offset])
+                            end_of_min = sg_list[location_of_sg_max_min+offset].find('|')
+                            end_of_max = sg_list[location_of_sg_max_min+offset].find(']')
+                            sg_dict['minimum'] = float(sg_list[location_of_sg_max_min+offset][1:end_of_min])
+                            sg_dict['maximum'] = float(sg_list[location_of_sg_max_min+offset][end_of_min+1:end_of_max])
+                            sg_dict['unit'] = re.sub('"', '', sg_list[location_of_sg_unit+offset])
+                            sg_dict['receiver'] = sg_list[location_of_sg_receiver+offset]
                             bo_list.append(sg_dict)     #加入bo_list中
                             if if_show:
                                 print('起始位：'+str(sg_dict['start_bit']), end=' ')
@@ -239,143 +259,110 @@ class DbcLoad(object):
             i += 1
 
         #读取CM_ SG_Signal Description
-        i = 0
-        length = len(line_list)
-        bo_id = 0
-        sg_name = ''
-        while i < length:
-            if len(line_list[i].split()) > 2:
-                if line_list[i].split()[0] == 'CM_' and line_list[i].split()[1] == 'SG_':#查找到了相应的CM的line
-                    bo_id = int(line_list[i].split()[2])
-                    sg_name = line_list[i].split()[3]#获取canid和sgname
-                    #截取cm
-                    if line_list[i][-2] != ';':
-                        comment = str(line_list[i].split('"')[-1])
-                        t = 0
-                        while(True):
-                            t = t + 1
-                            comment = comment + line_list[i+t]
-                            if( line_list[i + t] != "\n"):
-                                if (line_list[i + t][-2] == ';') :
-                                    break
+        if(self.if_sig_desc):
+            i = 0
+            length = len(line_list)
+            bo_id = 0
+            sg_name = ''
+            while i < length:
+                if len(line_list[i].split()) > 2:
+                    if line_list[i].split()[0] == 'CM_' and line_list[i].split()[1] == 'SG_':#查找到了相应的CM的line
+                        bo_id = int(line_list[i].split()[2])
+                        sg_name = line_list[i].split()[3]#获取canid和sgname
+                        #截取cm
+                        if line_list[i][-2] != ';':
+                            comment = str(line_list[i].split('"')[-1])
+                            t = 0
+                            while(True):
+                                t = t + 1
+                                comment = comment + line_list[i+t]
+                                if( line_list[i + t] != "\n"):
+                                    if (line_list[i + t][-2] == ';'):
+                                        break
 
-                            # if line_list[i][-2] == ';':
-                            #     break
-                    else:
-                        comment = line_list[i].split('"')[-2]
-                        #print(line_list[i])
-                    #self.cm_put(bo_id, sg_name, comment)
-                    self.put_inedx(bo_id,sg_name,"comment",comment)
-                    if if_show:
-                        print(str(bo_id)+' '+sg_name)
-                        print(comment)
-            i += 1
+                                # if line_list[i][-2] == ';':
+                                #     break
+                        else:
+                            comment = line_list[i].split('"')[-2]
+                            #print(line_list[i])
+                        #self.cm_put(bo_id, sg_name, comment)
+                        self.put_inedx(bo_id,sg_name,"comment",comment)
+                        if if_show:
+                            print(str(bo_id)+' '+sg_name)
+                            print(comment)
+                i += 1
+
 
         #读取START_VALUE
-        i = 0
-        length = len(line_list)
-        bo_id = 0
-        sg_name = ''
-        while i < length:
-            if len(line_list[i].split()) > 2:
-                if line_list[i].split()[0] == 'BA_' and line_list[i].split()[1] == '"GenSigStartValue"':#查找到了相应的START_VALUE
-                    bo_id = int(line_list[i].split()[3])
-                    sg_name = line_list[i].split()[4]
-                    inital_value = hex(int(float((line_list[i].split()[5].rstrip(';')))))
-                    self.put_inedx(bo_id, sg_name, "inital_value", inital_value)
-                    if if_show:
-                        print(str(bo_id)+' '+sg_name+str(inital_value))
-                        print(comment)
-            i += 1
+        if(self.if_start_val ):
+            i = 0
+            length = len(line_list)
+            bo_id = 0
+            sg_name = ''
+            while i < length:
+                if len(line_list[i].split()) > 2:
+                    if line_list[i].split()[0] == 'BA_' and line_list[i].split()[1] == '"GenSigStartValue"':#查找到了相应的START_VALUE
+                        bo_id = int(line_list[i].split()[3])
+                        sg_name = line_list[i].split()[4]
+                        inital_value = hex(int(float((line_list[i].split()[5].rstrip(';')))))
+                        self.put_inedx(bo_id, sg_name, "inital_value", inital_value)
+                        if if_show:
+                            print(str(bo_id)+' '+sg_name+str(inital_value))
+                            print(comment)
+                i += 1
 
         #信号值描述
-        i = 0
-        length = len(line_list)
-        bo_id = 0
-        sg_name = ''
-        while i < length:
-            if len(line_list[i].split()) > 2:
-                if line_list[i].split()[0] == 'VAL_':#查找到了相应的描述
-                    bo_id = int(line_list[i].split()[1])
-                    sg_name = line_list[i].split()[2]
-                    j = 1
-                    val_des_list = []
-                    #数字
-                    val_des_list.append(str(hex(int(line_list[i].split()[3])))+': ')
-                    while line_list[i].split()[j] != ' ;\n':
-                        val_des_list.append(line_list[i].split('"')[j]+'\n')
-                        j = j+1
-                        if line_list[i].split('"')[j] == ' ;\n':
-                            break
+        if(self.if_sig_val_desc):
+            i = 0
+            length = len(line_list)
+            bo_id = 0
+            sg_name = ''
+            while i < length:
+                if len(line_list[i].split()) > 2:
+                    if line_list[i].split()[0] == 'VAL_':#查找到了相应的描述
+                        bo_id = int(line_list[i].split()[1])
+                        sg_name = line_list[i].split()[2]
+                        j = 1
+                        val_des_list = []
                         #数字
-                        val_des_list.append(str(hex(int(line_list[i].split('"')[j])))+': ')
-                        j = j+1
-                    if len(val_des_list) <= val_description_max_number:
-                        self.put_inedx(bo_id, sg_name, "val_description", val_des_list)
-                    #val_des_list = []
-            i += 1
+                        val_des_list.append(str(hex(int(line_list[i].split()[3])))+': ')
+                        while line_list[i].split()[j] != ' ;\n':
+                            val_des_list.append(line_list[i].split('"')[j]+'\n')
+                            j = j+1
+                            if line_list[i].split('"')[j] == ' ;\n':
+                                break
+                            #数字
+                            val_des_list.append(str(hex(int(line_list[i].split('"')[j])))+': ')
+                            j = j+1
+                        if len(val_des_list) <= self.val_description_max_number:
+                            self.put_inedx(bo_id, sg_name, "val_description", val_des_list)
+                        #val_des_list = []
+                i += 1
 
         #读取发送者和接收者
-        #tran_recv = set()
-        # len_of_dbc_list = len(self.dbc_list)
-        # i = 0
-        # while i < len_of_dbc_list:
-        #     for bo_line in self.dbc_list[i]:
-        #         if 'transmitter' in bo_line:
-        #             self.tran_recv.add(bo_line['transmitter'])
-        #         if 'receiver' in bo_line:
-        #             self.tran_recv.add(bo_line['receiver'])
-        #     i += 1
-        # for each in self.tran_recv:
-        #     self.tran_recv_list.append(each)
-        # print(self.tran_recv_list)
-        # list_len = len(self.tran_recv_list)
-        # i = 0
-        # while i < list_len:
-        #     j = 0
-        #     while j < list_len:
-        #         if j == i:
-        #             j = j+1
-        #             continue
-        #         if self.tran_recv_list[j].find(self.tran_recv_list[i]) != -1:
-        #             self.tran_recv_list.remove(self.tran_recv_list[j])
-        #             list_len -= 1
-        #         j += 1
-        #     i += 1
-        len_of_dbc_list = len(self.dbc_list)
-        i = 0
-        while i < len_of_dbc_list:
-            for bo_line in self.dbc_list[i]:
-                if 'transmitter' in bo_line:
-                    if bo_line['transmitter'].find(',') != -1:
-                        self.tran_recv.add(bo_line['transmitter'].split(','))
-                    else:
-                        self.tran_recv.add(bo_line['transmitter'])
-                    #self.tran_recv.add(bo_line['transmitter'])
-                if 'receiver' in bo_line:
-                    if bo_line['receiver'].find(',')!= -1:
-                        self.tran_recv.add(bo_line['receiver'].split(',')[0])
-                        self.tran_recv.add(bo_line['receiver'].split(',')[1])
-                    else:
-                        self.tran_recv.add(bo_line['receiver'])
-                    #self.tran_recv.add(bo_line['receiver'])
-            i += 1
-        for each in self.tran_recv:
-            self.tran_recv_list.append(each)
-        print(self.tran_recv_list)
-        # list_len = len(self.tran_recv_list)
-        # i = 0
-        # while i < list_len:
-        #     j = 0
-        #     while j < list_len:
-        #         if j == i:
-        #             j = j+1
-        #             continue
-        #         if self.tran_recv_list[j].find(self.tran_recv_list[i]) != -1:
-        #             self.tran_recv_list.remove(self.tran_recv_list[j])
-        #             list_len -= 1
-        #         j += 1
-        #     i += 1
+        if(self.if_recv_send):
+            len_of_dbc_list = len(self.dbc_list)
+            i = 0
+            while i < len_of_dbc_list:
+                for bo_line in self.dbc_list[i]:
+                    if 'transmitter' in bo_line:
+                        if bo_line['transmitter'].find(',') != -1:
+                            self.tran_recv.add(bo_line['transmitter'].split(','))
+                        else:
+                            self.tran_recv.add(bo_line['transmitter'])
+                        #self.tran_recv.add(bo_line['transmitter'])
+                    if 'receiver' in bo_line:
+                        if bo_line['receiver'].find(',')!= -1:
+                            self.tran_recv.add(bo_line['receiver'].split(',')[0])
+                            self.tran_recv.add(bo_line['receiver'].split(',')[1])
+                        else:
+                            self.tran_recv.add(bo_line['receiver'])
+                        #self.tran_recv.add(bo_line['receiver'])
+                i += 1
+            for each in self.tran_recv:
+                self.tran_recv_list.append(each)
+            if (if_show_global):
+                print(self.tran_recv_list)
 
         ############打印结果
         if if_show:
@@ -386,7 +373,8 @@ class DbcLoad(object):
 
     def dbc_info(self):
         length = len(self.dbc_list)
-        print("DBC中一共的信号：" + str(length))
+        if (if_show_global):
+            print("DBC中一共的信号：" + str(length))
         i = 0
         while i < length:
             for line in self.dbc_list[i]:
@@ -403,7 +391,8 @@ class DbcLoad(object):
         #编译所有BO进行结构体定义
         bo_list_struct = []
         length = len(self.dbc_list)
-        print("DBC中一共的信号：" + str(length))
+        if (if_show_global):
+            print("DBC中一共的信号：" + str(length))
         i = 0
         while i < length:
             # 定义struct结构体
@@ -430,7 +419,8 @@ class DbcLoad(object):
         #接收buffer结构体的定义
         bo_list_struct = []
         length = len(self.dbc_list)
-        print("DBC中一共的信号：" + str(length))
+        if (if_show_global):
+            print("DBC中一共的信号：" + str(length))
         i = 0
         while i < length:
             # 定义struct结构体
@@ -532,10 +522,11 @@ class DbcLoad(object):
             i += 1
 
     def dbc_excel_gen(self):
-        print(">>>")
-        print(self.dbc_list)
+        if (if_show_global):
+            print(">>>")
+            print(self.dbc_list)
         book = xlwt.Workbook(encoding='utf-8')
-        sheet = book.add_sheet(excel_page_name, cell_overwrite_ok=True)
+        sheet = book.add_sheet(excel_page_name, cell_overwrite_ok = True)
         row_counter = 0
 
         #write tittle
@@ -664,10 +655,10 @@ class DbcLoad(object):
 
         book.save(self.dbc_name.replace('.', '_') + '.xls')
 
-    def dbc2excel(self, filepath):
+    def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(0)
+        self.parse_dbc(0,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send)
         self.dbc_excel_gen()
 
 

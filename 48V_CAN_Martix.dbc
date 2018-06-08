@@ -1,0 +1,325 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: EMS
+VAL_TABLE_ EngineStsForDCT 7 "Invalid" 6 "Reserved" 5 "Reserved" 4 "Engine running in limp home mode" 3 "Engine running" 2 "Activation of starter powerstage" 1 "Stop" 0 "Init" ;
+VAL_TABLE_ UNDERVOLTAGE_PROTECTION 1 "Fault" 0 "No fault" ;
+
+
+BO_ 634 BMS_5: 8 Vector__XXX
+ SG_ BMS5_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BMS5_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ Reserved_Bms_uMinDchaPreLong : 15|8@0+ (0.25,0) [0|60] "V"  EMS
+ SG_ Reserved_Bms_uMaxChrgPreLong : 7|8@0+ (0.25,10) [10|70] "V"  EMS
+ SG_ Reserved_Bms_iMaxDchaPreLong : 31|8@0+ (2,-500) [-500|0] "A"  EMS
+ SG_ Reserved_Bms_iMaxChrgPreLong : 23|8@0+ (2,0) [0|500] ""  EMS
+
+BO_ 368 EMS_11: 8 EMS
+ SG_ EMS11_CRC : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ EMS11_AliveCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ Eem_uMinEdrv : 25|10@0+ (0.063,0) [0|63.94] "V" Vector__XXX
+ SG_ Eem_uMaxEdrv : 19|10@0+ (0.063,0) [0|63.94] "V" Vector__XXX
+ SG_ Eem_iMinEdrv : 13|10@0+ (1,-1000) [-1000|0] "A" Vector__XXX
+ SG_ Eem_iMaxEdrv : 7|10@0+ (1,0) [0|1000] "A" Vector__XXX
+
+BO_ 346 EMS_10: 8 EMS
+ SG_ EMS10_Checksum : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ EMS10_AliveCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ Generator_TrqLimitation : 44|5@0+ (-1,0) [-30|0] "Nm" Vector__XXX
+ SG_ Generator_RegVoltage : 37|9@0+ (0.1,10) [20|54] "V" Vector__XXX
+ SG_ DIS_ExMaxCurrent : 27|6@0+ (0.1,0) [0|5] "A" Vector__XXX
+ SG_ ESA_DurationMax : 16|5@0+ (0.1,0) [0|2] "S" Vector__XXX
+ SG_ ESA_SpeedGradient : 10|10@0+ (-10,0) [-8000|0] "Rpm/s" Vector__XXX
+ SG_ ESA_EndSpeed : 1|7@0+ (10,0) [0|1000] "Rpm" Vector__XXX
+ SG_ ESA_TorqueLimitation : 7|6@0+ (-1,0) [-44|0] "Nm" Vector__XXX
+
+BO_ 320 EMS_9: 8 EMS
+ SG_ EMS9_CRC : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ EMS9_AliveCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ Negative_Torque_Gradient : 37|7@0+ (-10,0) [-1000|0] "Nm/s" Vector__XXX
+ SG_ Positive_Torque_Gradient : 28|7@0+ (10,0) [0|1000] "Nm/s" Vector__XXX
+ SG_ TrqCtrl_RegTorque : 23|11@0- (0.1,0) [-44|55] "Nm" Vector__XXX
+ SG_ TrqCtrl_Neg_Trq_Lim : 13|6@0+ (-1,0) [-44|0] "Nm" Vector__XXX
+ SG_ TrqCtrl_Pos_Trq_Lim : 3|6@0+ (1,0) [0|55] "Nm" Vector__XXX
+ SG_ MM_REQUEST : 7|4@0+ (1,0) [1|9] "" Vector__XXX
+
+BO_ 288 EMS_8: 8 EMS
+ SG_ EMS8_DCDC_CRC : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ EMS8_DCDC_DesMod : 7|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ EMS8_DCDC_Counter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ EMS8_DCDC_DesLvSp : 12|8@0+ (0.125,0) [0|31.875] "V" Vector__XXX
+ SG_ EMS8_DCDC_DesIlvLmt : 25|12@0+ (0.125,0) [0|511.875] "A" Vector__XXX
+ SG_ EMS8_DCDC_DesIhvLmt : 20|11@0+ (0.0625,0) [0|127.9375] "A" Vector__XXX
+ SG_ EMS8_DCDC_DesHvSp : 4|8@0+ (0.25,0) [0|63.75] "V" Vector__XXX
+
+BO_ 523 EMS_7: 8 EMS
+ SG_ EngineStsForDCT : 47|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ EMS7_DCDC_DesMinLv : 15|8@0+ (0.125,0) [0|31.875] "V" Vector__XXX
+ SG_ EMS7_DCDC_DesMinHv : 7|8@0+ (0.25,0) [0|63.75] "V" Vector__XXX
+ SG_ EMS7_stOperModDesBms : 23|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ EMS7_AliveCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ EMS7_Checksum : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 642 DCDC_2: 8 Vector__XXX
+ SG_ DC02_FailureLevel : 40|3@0+ (1,0) [0|7] ""  EMS
+ SG_ DC2_DFC : 46|6@0+ (1,0) [0|63] ""  EMS
+ SG_ DC2_MaxLvCurr : 27|12@0+ (0.125,0) [0|511.875] "A"  EMS
+ SG_ DC2_KL15Satus : 47|1@0+ (1,0) [0|1] ""  EMS
+ SG_ DC2_MaxHvCurr : 22|11@0+ (0.0625,-128) [-128|-0.0625] "A"  EMS
+ SG_ DC2_Efficiency : 14|8@0+ (0.00390625,0) [0|0.99609375] ""  EMS
+ SG_ DC2_DCTemp : 6|8@0+ (1,-40) [0|215] "°Ê"  EMS
+ SG_ DC2_CtrlMod : 7|1@0+ (1,0) [0|1] ""  EMS
+ SG_ DC2_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ DC2_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+
+BO_ 514 DCDC_1: 8 Vector__XXX
+ SG_ DC1_LVDcU : 23|8@0+ (0.125,0) [0|31.875] "V"  EMS
+ SG_ DC1_LvDcCurr : 36|13@0+ (0.125,-512) [-512|511.875] "A"  EMS
+ SG_ DC1_HVDcU : 0|9@0+ (0.25,0) [0|127.75] "V"  EMS
+ SG_ DC1_HvDcCurr : 31|11@0+ (0.125,-128) [-128|127.75] "A"  EMS
+ SG_ DC1_EfcMod : 3|3@0+ (1,0) [0|7] ""  EMS
+ SG_ DC1_DeratFlag : 7|4@0+ (1,0) [0|15] ""  EMS
+ SG_ DC1_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ DC1_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+
+BO_ 542 BSG_3: 8 Vector__XXX
+ SG_ BSG3_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BSG3_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ UNDERVOLTAGE_PROTECTION : 5|1@0+ (1,0) [0|1] ""  EMS
+ SG_ ALIVECOUNTER_FAULT : 33|1@0+ (1,0) [0|1] ""  EMS
+ SG_ CHECKSUM_FAULT : 34|1@0+ (1,0) [0|1] ""  EMS
+ SG_ REVERSE_SPEED_FAULT : 35|1@0+ (1,0) [0|1] ""  EMS
+ SG_ BSG_12V_VOLTAGE_LOW : 36|1@0+ (1,0) [0|1] ""  EMS
+ SG_ BSG_12V_VOLTAGE_HIGH : 37|1@0+ (1,0) [0|1] ""  EMS
+ SG_ EXC_OPENCIRCUIT_FAULT : 39|1@0+ (1,0) [0|1] ""  EMS
+ SG_ EXC_LATENT_FAULT : 24|1@0+ (1,0) [0|1] ""  EMS
+ SG_ EXC_HSM_FAULT : 25|1@0+ (1,0) [0|1] ""  EMS
+ SG_ CAN_COM_ERROR : 26|1@0+ (1,0) [0|1] ""  EMS
+ SG_ BRUSH_WEAR_FAULT : 27|1@0+ (1,0) [0|1] ""  EMS
+ SG_ DC_VOLTAGEMEAS_SENSOR_FAULT : 28|1@0+ (1,0) [0|1] ""  EMS
+ SG_ PHX_CURRENT_SENSOR_FAULT : 17|3@0+ (1,0) [0|6] ""  EMS
+ SG_ INVERTER_TEMP_SENSOR_FAULT : 19|1@0+ (1,0) [0|1] ""  EMS
+ SG_ UNLOCK_PTL_FAULT : 20|1@0+ (1,0) [0|1] ""  EMS
+ SG_ POSITION_SENSORS_FAULT : 21|1@0+ (1,0) [0|1] ""  EMS
+ SG_ STATOR_FAULT : 22|1@0+ (1,0) [0|1] ""  EMS
+ SG_ INVERTER_FAULT : 23|1@0+ (1,0) [0|1] ""  EMS
+ SG_ TORQUE_LEVEL_FAULT : 10|1@0+ (1,0) [0|1] ""  EMS
+ SG_ ROTOR_OVERCURRENT : 11|1@0+ (1,0) [0|1] ""  EMS
+ SG_ STATOR_OVERCURRENT : 14|3@0+ (1,0) [0|7] ""  EMS
+ SG_ LOADDUMP : 15|1@0+ (1,0) [0|1] ""  EMS
+ SG_ OVERVOLTAGE : 0|1@0+ (1,0) [0|1] ""  EMS
+ SG_ OVERHEATING : 2|1@0+ (1,0) [0|1] ""  EMS
+ SG_ STARTER_WARNING : 3|1@0+ (1,0) [0|1] ""  EMS
+ SG_ THERMAL_DERATING : 4|1@0+ (1,0) [0|1] ""  EMS
+ SG_ STALLED_ROTOR_PROTECTION : 6|1@0+ (1,0) [0|1] ""  EMS
+ SG_ TORQUE_SUSPENSION : 7|1@0+ (1,0) [0|1] ""  EMS
+
+BO_ 449 BSG_2: 8 Vector__XXX
+ SG_ BSG2_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BSG2_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ IDC_Current : 32|10@0- (1,0) [-400|400] "A"  EMS
+ SG_ Negative_Torque_Prediction_20s : 39|7@0+ (-0.5,0) [-55|0] "Nm"  EMS
+ SG_ Positive_Torque_Prediction_20s : 30|7@0+ (0.5,0) [0|55] "Nm"  EMS
+ SG_ Negative_Torque_Prediction_1s : 21|7@0+ (-0.5,0) [-55|0] "Nm"  EMS
+ SG_ Positive_Torque_Prediction_1s : 12|7@0+ (0.5,0) [0|55] "Nm"  EMS
+ SG_ Estimated_Torque : 7|11@0- (0.1,0) [-44|55] "Nm"  EMS
+
+BO_ 433 BSG_1: 8 Vector__XXX
+ SG_ BSG1_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BSG1_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ CRANK_POSSIBLE_IF_STOPPED : 43|1@0+ (1,0) [0|1] ""  EMS
+ SG_ ENA_Status : 44|1@0+ (1,0) [0|1] ""  EMS
+ SG_ Bus_Voltage : 24|12@0+ (0.02,0) [0|70] "V"  EMS
+ SG_ iBSG_Temperature_Rate : 31|7@0+ (1,0) [0|120] "%"  EMS
+ SG_ Reserved_BeltPretension_Status : 16|1@0+ (1,0) [0|1] ""  EMS
+ SG_ Rotor_Speed : 15|15@0- (1,14000) [-2000|22000] "Rpm"  EMS
+ SG_ MM_STATUS : 7|8@0+ (1,0) [1|144] ""  EMS
+
+BO_ 623 BMS_4: 8 Vector__XXX
+ SG_ BMS4_CRC : 56|8@1- (1,0) [0|255] ""  EMS
+ SG_ BMS4_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ Bms_iMaxDchaPredEemTiSho : 31|8@0+ (2,-500) [-500|0] "A"  EMS
+ SG_ Bms_iMaxChrgPredEemTiSho : 23|8@0+ (2,0) [0|500] "A"  EMS
+ SG_ Bms_uMinDchaPredEemTiSho : 15|8@0+ (0.25,0) [0|60] "V"  EMS
+ SG_ Bms_uMaxChrgPredEemTiSho : 7|8@0+ (0.25,10) [10|70] "V"  EMS
+
+BO_ 590 BMS_3: 8 Vector__XXX
+ SG_ BMS3_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BMS3_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ Bms_ClassFlt : 54|3@0+ (1,0) [0|7] ""  EMS
+ SG_ Bms_stFltId : 47|8@0+ (1,0) [0|255] ""  EMS
+ SG_ Bms_iMin : 25|10@0+ (1,-500) [-500|521] "A"  EMS
+ SG_ Bms_iMax : 19|10@0+ (1,-500) [-500|521] "A"  EMS
+ SG_ Bms_uMin : 13|10@0+ (0.1,0) [0|102.1] "V"  EMS
+ SG_ Bms_uMax : 7|10@0+ (0.1,0) [0|102.1] "V"  EMS
+
+BO_ 570 BMS_2: 8 Vector__XXX
+ SG_ Bms_uMinDchaPredCrank : 47|8@0+ (0.25,0) [0|60] "V"  EMS
+ SG_ Bms_iMaxDchaPredCrank : 39|8@0+ (2,-500) [-500|0] "A"  EMS
+ SG_ BMS2_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BMS2_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+ SG_ Bms_uActLnk : 23|10@0+ (0.1,0) [0|102.1] "V"  EMS
+ SG_ Bms_stCntctr : 29|3@0+ (1,0) [0|7] ""  EMS
+ SG_ Bms_MILReq : 26|1@0+ (1,0) [0|1] ""  EMS
+ SG_ Bms_tAct : 15|8@0+ (1,-50) [-50|203] "°„C"  EMS
+ SG_ Bms_stSoh : 7|8@0+ (1,0) [0|100] "%"  EMS
+
+BO_ 546 BMS_1: 8 Vector__XXX
+ SG_ Bms_uAct : 15|10@0+ (0.1,0) [0|102.1] "V"  EMS
+ SG_ Bms_stSoc : 7|8@0+ (1,0) [0|100] "%"  EMS
+ SG_ Bms_stOperModAct : 27|4@0+ (1,0) [0|15] ""  EMS
+ SG_ Bms_iAct : 21|10@0+ (1,-500) [-500|521] "A"  EMS
+ SG_ BMS1_CRC : 63|8@0+ (1,0) [0|255] ""  EMS
+ SG_ BMS1_AliveCounter : 51|4@0+ (1,0) [0|15] ""  EMS
+
+
+
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Periodic","Event","EventPeriodic";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 5000;
+BA_DEF_  "BaudRate" INT 0 0;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenMsgSendType" "Periodic";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "BaudRate" 500000;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 634 20;
+BA_ "GenMsgCycleTime" BO_ 368 10;
+BA_ "GenMsgCycleTime" BO_ 346 10;
+BA_ "GenMsgCycleTime" BO_ 320 10;
+BA_ "GenMsgCycleTime" BO_ 288 10;
+BA_ "GenMsgCycleTime" BO_ 523 20;
+BA_ "GenMsgCycleTime" BO_ 642 20;
+BA_ "GenMsgCycleTime" BO_ 514 20;
+BA_ "GenMsgCycleTime" BO_ 542 20;
+BA_ "GenMsgCycleTime" BO_ 449 10;
+BA_ "GenMsgCycleTime" BO_ 433 10;
+BA_ "GenMsgCycleTime" BO_ 623 20;
+BA_ "GenMsgCycleTime" BO_ 590 20;
+BA_ "GenMsgCycleTime" BO_ 570 20;
+BA_ "GenMsgCycleTime" BO_ 546 20;
+BA_ "GenSigStartValue" SG_ 634 Reserved_Bms_uMinDchaPreLong 254;
+BA_ "GenSigStartValue" SG_ 634 Reserved_Bms_uMaxChrgPreLong 254;
+BA_ "GenSigStartValue" SG_ 634 Reserved_Bms_iMaxDchaPreLong 254;
+BA_ "GenSigStartValue" SG_ 634 Reserved_Bms_iMaxChrgPreLong 254;
+BA_ "GenSigStartValue" SG_ 368 Eem_iMinEdrv 1000;
+BA_ "GenSigStartValue" SG_ 346 Generator_TrqLimitation 10;
+BA_ "GenSigStartValue" SG_ 346 Generator_RegVoltage 380;
+BA_ "GenSigStartValue" SG_ 346 DIS_ExMaxCurrent 20;
+BA_ "GenSigStartValue" SG_ 346 ESA_DurationMax 10;
+BA_ "GenSigStartValue" SG_ 346 ESA_SpeedGradient 200;
+BA_ "GenSigStartValue" SG_ 346 ESA_EndSpeed 10;
+BA_ "GenSigStartValue" SG_ 320 Negative_Torque_Gradient 10;
+BA_ "GenSigStartValue" SG_ 320 Positive_Torque_Gradient 10;
+BA_ "GenSigStartValue" SG_ 320 TrqCtrl_Neg_Trq_Lim 30;
+BA_ "GenSigStartValue" SG_ 320 TrqCtrl_Pos_Trq_Lim 30;
+BA_ "GenSigStartValue" SG_ 320 MM_REQUEST 1;
+BA_ "GenSigStartValue" SG_ 288 EMS8_DCDC_DesLvSp 112;
+BA_ "GenSigStartValue" SG_ 288 EMS8_DCDC_DesIlvLmt 4088;
+BA_ "GenSigStartValue" SG_ 288 EMS8_DCDC_DesIhvLmt 2032;
+BA_ "GenSigStartValue" SG_ 288 EMS8_DCDC_DesHvSp 192;
+BA_ "GenSigStartValue" SG_ 642 DC2_MaxLvCurr 4088;
+BA_ "GenSigStartValue" SG_ 642 DC2_DCTemp 40;
+BA_ "GenSigStartValue" SG_ 514 DC1_LvDcCurr 4096;
+BA_ "GenSigStartValue" SG_ 514 DC1_HvDcCurr 1024;
+BA_ "GenSigStartValue" SG_ 449 Negative_Torque_Prediction_20s 88;
+BA_ "GenSigStartValue" SG_ 449 Positive_Torque_Prediction_20s 100;
+BA_ "GenSigStartValue" SG_ 449 Negative_Torque_Prediction_1s 88;
+BA_ "GenSigStartValue" SG_ 449 Positive_Torque_Prediction_1s 100;
+BA_ "GenSigStartValue" SG_ 433 Rotor_Speed -14000;
+BA_ "GenSigStartValue" SG_ 433 MM_STATUS 16;
+BA_ "GenSigStartValue" SG_ 623 Bms_iMaxDchaPredEemTiSho 254;
+BA_ "GenSigStartValue" SG_ 623 Bms_iMaxChrgPredEemTiSho 254;
+BA_ "GenSigStartValue" SG_ 623 Bms_uMinDchaPredEemTiSho 254;
+BA_ "GenSigStartValue" SG_ 623 Bms_uMaxChrgPredEemTiSho 254;
+BA_ "GenSigStartValue" SG_ 590 Bms_iMin 1022;
+BA_ "GenSigStartValue" SG_ 590 Bms_iMax 1022;
+BA_ "GenSigStartValue" SG_ 590 Bms_uMin 1022;
+BA_ "GenSigStartValue" SG_ 590 Bms_uMax 1022;
+BA_ "GenSigStartValue" SG_ 570 Bms_uMinDchaPredCrank 254;
+BA_ "GenSigStartValue" SG_ 570 Bms_iMaxDchaPredCrank 254;
+BA_ "GenSigStartValue" SG_ 570 Bms_uActLnk 1022;
+BA_ "GenSigStartValue" SG_ 570 Bms_tAct 254;
+BA_ "GenSigStartValue" SG_ 570 Bms_stSoh 254;
+BA_ "GenSigStartValue" SG_ 546 Bms_uAct 1022;
+BA_ "GenSigStartValue" SG_ 546 Bms_stSoc 254;
+BA_ "GenSigStartValue" SG_ 546 Bms_iAct 1022;
+VAL_ 320 MM_REQUEST 9 "Reserved_GO_SLEEPING" 8 "DISCHARGE" 7 "ESA" 4 "GENERATOR" 1 "NEUTRAL/Startup" 5 "TORQUE_CTRL" ;
+VAL_ 288 EMS8_DCDC_DesMod 4 "Shutdown" 3 "Boost" 2 "Buck" 1 "Precharge" 0 "Standby/Startup" ;
+VAL_ 523 EngineStsForDCT 7 "Invalid" 6 "Reserved" 5 "Reserved" 4 "Engine running in limp home mode" 3 "Engine running" 2 "Activation of starter powerstage" 1 "Stop" 0 "Init" ;
+VAL_ 523 EMS7_stOperModDesBms 15 "ERROR" 14 "perform emergency shutdo (Rese)" 13 "post-run(open contactor)" 12 "reserved" 11 "reserved" 10 "reserved" 9 "reserved" 8 "reserved" 7 "reserved" 6 "reserved" 5 "close contactor" 4 "reserved" 3 "reserved" 2 "reserved" 1 "reserved" 0 "Init" ;
+VAL_ 642 DC02_FailureLevel 4 "Unhealable failure" 3 "Healable failure" 2 "Limphome" 1 "Derating" 0 "No failure/Startup" ;
+VAL_ 642 DC2_KL15Satus 1 "ON" 0 "OFF/Startup" ;
+VAL_ 642 DC2_CtrlMod 1 "Current control" 0 "Voltage control/Startup" ;
+VAL_ 514 DC1_EfcMod 7 "Sleep" 6 "Shutdown" 5 "Failure" 4 "Boost" 3 "Buck" 2 "Precharge" 1 "Standby" 0 "Init/Startup" ;
+VAL_ 514 DC1_DeratFlag 12 "HV derating by LV current limit" 11 " HV derating by HV current limit" 10 "HV derating by minimum LV vol" 9 "HV  derating by LV voltage" 8 "HV derating by power" 7 "HV derating by temperature" 6 "LV derating by LV current limit" 5 "LV derating by HV current limit" 4 "LV derating by minimum HV vol" 3 "LV  derating by HV voltage" 2 "LV derating by power" 1 "LV derating by temperature" 0 "No derating/Startup" ;
+VAL_ 542 UNDERVOLTAGE_PROTECTION 1 "Fault" 0 "No fault" ;
+VAL_ 542 ALIVECOUNTER_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 CHECKSUM_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 REVERSE_SPEED_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 BSG_12V_VOLTAGE_LOW 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 BSG_12V_VOLTAGE_HIGH 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 EXC_OPENCIRCUIT_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 EXC_LATENT_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 EXC_HSM_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 CAN_COM_ERROR 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 BRUSH_WEAR_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 DC_VOLTAGEMEAS_SENSOR_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 PHX_CURRENT_SENSOR_FAULT 6 "Phase 6  Fault" 5 "Phase 5  Fault" 4 "Phase 4  Fault" 3 "Phase 3  Fault" 2 "Phase 2  Fault" 1 "Phase 1  Fault" 0 "No  fault/Startup" ;
+VAL_ 542 INVERTER_TEMP_SENSOR_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 UNLOCK_PTL_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 POSITION_SENSORS_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 STATOR_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 INVERTER_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 TORQUE_LEVEL_FAULT 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 ROTOR_OVERCURRENT 1 "Fault" 0 "No  fault/Startup" ;
+VAL_ 542 STATOR_OVERCURRENT 6 "Phase 6  Fault" 5 "Phase 5  Fault" 4 "Phase 4  Fault" 3 "Phase 3  Fault" 2 "Phase 2  Fault" 1 "Phase 1  Fault" 0 "No  fault/Startup" ;
+VAL_ 542 LOADDUMP 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 OVERVOLTAGE 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 OVERHEATING 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 STARTER_WARNING 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 THERMAL_DERATING 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 STALLED_ROTOR_PROTECTION 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 542 TORQUE_SUSPENSION 1 "Fault" 0 "No fault/Startup" ;
+VAL_ 433 CRANK_POSSIBLE_IF_STOPPED 1 "Active" 0 "Not active/Startup" ;
+VAL_ 433 ENA_Status 1 "Active" 0 "Not active/Startup" ;
+VAL_ 433 Reserved_BeltPretension_Status 1 "Active" 0 "Not Active/Startup" ;
+VAL_ 433 MM_STATUS 144 "Reserved_GO_SLEEPING_ONGOING" 2 "INIT_FAULT" 131 " DISCHARGE_OUT_OF_RANGE" 130 " DISCHARGE_FAULT" 129 "DISCHARGE_DONE" 128 "DISCHARGE_ACTIVE" 116 "ESA_INHIB" 115 "ESA_OUT_OF_RANGE" 114 "ESA_FAULT" 113 "ESA_DONE" 112 "ESA_ACTIVE" 86 "TORQUE_CTRL_MAX" 85 " TORQUE_CTRL_DERATING" 84 "TORQUE_CTRL_INHIB" 83 "TORQUE_CTRL_OUT_OF_RANGE" 82 "TORQUE_CTRL_FAULT" 81 "TORQUE_CTRL_IDLE" 80 "TORQUE_CTRL_ACTIVE" 68 "GENERATOR_MAX" 67 "GENERATOR_DERATING" 66 "GENERATOR_OUT_OF_RANGE" 65 "GENERATOR_FAULT" 64 "GENERATOR_ACTIVE" 16 "NEUTRAL/Startup" 1 "INIT_ACTIVE" ;
+VAL_ 590 Bms_ClassFlt 7 "Invalid" 6 "reserved" 5 "reserved" 4 " reserved" 3 "unhealable fault" 2 "healable fault" 1 "derating " 0 "no fault/Startup" ;
+VAL_ 570 Bms_stCntctr 7 "Invalid" 6 "reserved" 5 "reserved" 4 "reserved" 3 "Stuck closed" 2 "Stuck open" 1 "Closed" 0 "Open" ;
+VAL_ 570 Bms_MILReq 1 "MIL request" 0 "No MIL request/Startup" ;
+VAL_ 546 Bms_stOperModAct 15 "ERROR" 14 "emergency shutdown completed" 13 "post-run completed" 12 "post-run active" 11 "shutting down" 10 "reserved" 9 "reserved" 8 "reserved" 7 "reserved" 6 "battery wishes disconnection " 5 "readyforoperati(contactor close)" 4 "reserved" 3 "ready for switch on / precharged" 2 "wait for pre-charge" 1 "pre run tests are performed " 0 "Init" ;
+
