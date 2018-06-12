@@ -329,10 +329,11 @@ class DbcLoad(object):
                         while line_list[i].split()[j] != ' ;\n':
                             val_des_list.append(line_list[i].split('"')[j]+'\n')
                             j = j+1
-                            if line_list[i].split('"')[j] == ' ;\n':
+                            if line_list[i].split('"')[j] == ' ;\n' or line_list[i].split('"')[j] == ' ;':
                                 break
                             #数字
                             val_des_list.append(str(hex(int(line_list[i].split('"')[j])))+': ')
+                            #val_des_list.append(str(line_list[i].split('"')[j])+': ')
                             j = j+1
                         if len(val_des_list) <= self.val_description_max_number:
                             self.put_inedx(bo_id, sg_name, "val_description", val_des_list)
@@ -658,7 +659,7 @@ class DbcLoad(object):
     def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(0,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send)
+        self.parse_dbc(1,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send)
         self.dbc_excel_gen()
 
 

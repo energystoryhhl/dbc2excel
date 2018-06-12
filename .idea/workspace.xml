@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69332162-3926-4903-bcfe-95b2a5b0aad5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/48V_CAN_Martix_dbc.xls" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dbc2excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbc2excel_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dbc2excel_main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dbc2excel_main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+            <state relative-caret-position="114">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -28,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbc2excel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dbc2excel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbc2excel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+            <state relative-caret-position="171">
+              <caret line="331" column="104" lean-forward="true" selection-start-line="331" selection-start-column="104" selection-end-line="331" selection-end-column="104" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -65,14 +63,14 @@
         <option value="$PROJECT_DIR$/123.py" />
         <option value="$PROJECT_DIR$/main_t.py" />
         <option value="$PROJECT_DIR$/mainFrame2.py" />
-        <option value="$PROJECT_DIR$/dbc2excel.py" />
         <option value="$PROJECT_DIR$/dbc2excel_main.py" />
+        <option value="$PROJECT_DIR$/dbc2excel.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-211" />
-    <option name="y" value="26" />
+    <option name="x" value="-138" />
+    <option name="y" value="34" />
     <option name="width" value="1364" />
     <option name="height" value="650" />
   </component>
@@ -81,23 +79,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="dbc2excel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbc2excel" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="dbc2excel" type="cbb8eebc:String" user="dbc2excel" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="dbc2excel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbc2excel" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -202,18 +200,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-211" y="26" width="1364" height="650" extended-state="0" />
+    <frame x="-138" y="34" width="1364" height="650" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25890207" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17062314" />
       <window_info anchor="bottom" id="TODO" order="9" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="right" id="Run" order="3" weight="0.29525223" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Python Console" order="2" />
+      <window_info anchor="right" id="Run" order="3" weight="0.23738873" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="3" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.40770465" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.46168223" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -232,6 +230,26 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3135">
+          <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1045">
@@ -355,22 +373,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
+    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+        <state relative-caret-position="114">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbc2excel_main.py">
+    <entry file="file://$PROJECT_DIR$/dbc2excel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+        <state relative-caret-position="171">
+          <caret line="331" column="104" lean-forward="true" selection-start-line="331" selection-start-column="104" selection-end-line="331" selection-end-column="104" />
           <folding>
-            <element signature="e#22#31#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
