@@ -237,6 +237,26 @@ class DbcLoad(object):
                             sg_dict['maximum'] = float(sg_list[location_of_sg_max_min+offset][end_of_min+1:end_of_max])
                             sg_dict['unit'] = re.sub('"', '', sg_list[location_of_sg_unit+offset])
                             sg_dict['receiver'] = sg_list[location_of_sg_receiver+offset]
+                            if(sg_dict['byte_order'] == 1):
+                                sg_dict['true_start_bit'] = sg_dict['start_bit']
+                            else:
+                                if (sg_dict['signal_size'] <= 8 and (sg_dict['start_bit'] % 8 + 1) >= sg_dict['signal_size']  ):
+                                    sg_dict['true_start_bit'] = sg_dict['start_bit'] - sg_dict['signal_size'] + 1
+                                else:
+                                    start = sg_dict['start_bit']
+                                    size = sg_dict['signal_size']
+                                    offset = 0
+                                    #cross_bytes = 0
+                                    if((start + 1) % 8 == 0):
+                                        offset = 8 - size % 8
+                                        cross_bytes = int(size / 8) - 1
+                                        sg_dict['true_start_bit'] = start + cross_bytes * 8 + offset + 1
+                                    else:
+                                        size = size - start % 8 - 1
+                                        start = start + 7 - start % 8
+                                        offest = 8 - size % 8
+                                        cross_bytes = int(size / 8) - 1
+                                        sg_dict['true_start_bit'] = start + cross_bytes * 8 + offset + 1
                             bo_list.append(sg_dict)     #加入bo_list中
                             if if_show:
                                 print('起始位：'+str(sg_dict['start_bit']), end=' ')
@@ -615,9 +635,9 @@ class DbcLoad(object):
                     else:
                         sheet.write(tittle_row + row_counter, signal_name_col + 2, "Intel",style_index)
                     #起始字节
-                    sheet.write(tittle_row + row_counter, signal_name_col + 3, str(int(bo_unit['start_bit'] / 8)),style_index)
+                    sheet.write(tittle_row + row_counter, signal_name_col + 3, str(int(bo_unit['true_start_bit'] / 8)),style_index)
                     #起始位
-                    sheet.write(tittle_row + row_counter, signal_name_col + 4, str(bo_unit['start_bit']),style_index)
+                    sheet.write(tittle_row + row_counter, signal_name_col + 4, str(bo_unit['true_start_bit']),style_index)
                     #循环类型
                     sheet.write(tittle_row + row_counter, signal_name_col + 5, 'cycle',style_index)
                     #信号类型

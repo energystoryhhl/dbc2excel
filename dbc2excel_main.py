@@ -19,7 +19,7 @@ class MyFrame(wx.Frame):
         self.if_asc_sort = True
 
         #静态文字
-        self.quote = wx.StaticText(self, label="CSDN: 黄洪磊energystory\n", pos=(420, 260))
+        self.quote = wx.StaticText(self, label="\n", pos=(420, 260))
         #控制台窗口
         self.logger = wx.TextCtrl(self, pos=(5, 300), size=(580, 130), style=wx.TE_MULTILINE | wx.TE_READONLY)
 
@@ -30,38 +30,42 @@ class MyFrame(wx.Frame):
         b = wx.Button(self,-1,u"选择dbc文件",pos=(10, 20),size=(200,100))
         self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
         # c button 增加图片
-        pic = wx.Image("./source/a.bmp", wx.BITMAP_TYPE_BMP).ConvertToBitmap()
-        c = wx.BitmapButton(self,-1,pic,pos=(250, 20),size=(290,150))
+        #pic = wx.Image("./source/a.bmp", wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        #c = wx.BitmapButton(self,-1,pic,pos=(250, 20),size=(290,150))
         #self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
 
         #增加复选框
         #panel = wx.Panel(self)  # 创建画板，控件容器
         #信号描述
-        self.check1 = wx.CheckBox(self, -1, '生成信号描述', pos=(250, 180), size=(100, -1))
+        HEIGHT = 25
+        OFFSET = 20
+        k = 1
+        self.check1 = wx.CheckBox(self, -1, '生成信号描述', pos=(250, HEIGHT), size=(100, -1))
         self.Bind(wx.EVT_CHECKBOX, self.SigDescEvtCheckBox, self.check1)
         self.check1.Set3StateValue(True)
 
-        self.check2 = wx.CheckBox(self, -1, '生成信号值描述', pos=(250, 200), size=(100, -1))
+        self.check2 = wx.CheckBox(self, -1, '生成信号值描述', pos=(250, HEIGHT + k * OFFSET), size=(100, -1))
         self.Bind(wx.EVT_CHECKBOX, self.SigValDescEvtCheckBox, self.check2)
         self.check2.Set3StateValue(True)
-
+        k += 1
         #最大信号值描述长度
-        self.quote = wx.StaticText(self, label="信号值描述最大文本长度\n", pos=(400, 180), size = (200, 20))
-        self.text1 = wx.TextCtrl(self, wx.ID_ANY, "70",pos=(400, 200), size=(100, 20), style=wx.TE_LEFT)
-        #print(self.text1.Value)
 
-        self.check3 = wx.CheckBox(self, -1, '生成初始值', pos=(250, 220), size=(100, -1))
+        self.check3 = wx.CheckBox(self, -1, '生成初始值', pos=(250, HEIGHT + k * OFFSET), size=(100, -1))
         self.Bind(wx.EVT_CHECKBOX, self.StartValEvtCheckBox, self.check3)
         self.check3.Set3StateValue(True)
-
-        self.check4 = wx.CheckBox(self, -1, '生成发送方和接收方', pos=(250, 240), size=(150, -1))
+        k += 1
+        self.check4 = wx.CheckBox(self, -1, '生成发送方和接收方', pos=(250, HEIGHT + k * OFFSET), size=(150, -1))
         self.Bind(wx.EVT_CHECKBOX, self.RecvSndEvtCheckBox, self.check4)
         self.check4.Set3StateValue(True)
-
-        self.check5 = wx.CheckBox(self, -1, '升序排序(取消勾选降序)', pos=(250, 260), size=(150, -1))
+        k += 1
+        self.check5 = wx.CheckBox(self, -1, '升序排序(取消勾选降序)', pos=(250, HEIGHT + k * OFFSET), size=(150, -1))
         self.Bind(wx.EVT_CHECKBOX, self.SortEvtCheckBox, self.check5)
         self.check5.Set3StateValue(True)
-
+        k += 1
+        self.quote = wx.StaticText(self, label="信号值描述最大文本长度\n", pos=(250, HEIGHT + k * OFFSET), size = (140, 20))
+        self.text1 = wx.TextCtrl(self, wx.ID_ANY, "70",pos=(400, HEIGHT + k * OFFSET), size=(100, 20), style=wx.TE_LEFT)
+        #print(self.text1.Value)
+        k += 1
         # Setting up the menu.
         filemenu = wx.Menu()
         # wx.ID_ABOUT and wx.ID_EXIT are standard IDs provided by wxWidgets.
@@ -77,7 +81,7 @@ class MyFrame(wx.Frame):
         # Set events.
         self.Bind(wx.EVT_MENU, self.OnAbout, menuAbout)
         self.Bind(wx.EVT_MENU, self.OnExit, menuExit)
-        self.logger.AppendText("Dbc转Excel工具仍在不断完善中\n***如果转换时间过长或无法转换，尝试取消勾选上方的选项再进行生成***\n有任何问题请将无法转换的dbc文件发送至>>>\nint.honglei.huang@uaes.com\n")
+        self.logger.AppendText("Dbc转Excel工具仍在不断完善中\n***如果转换时间过长或无法转换，尝试取消勾选上方的选项再进行生成***\n有任何问题请在下面网址留言\nhttps://blog.csdn.net/hhlenergystory/article/details/80443454\n")
 
         self.Show(True)
 
@@ -105,7 +109,7 @@ class MyFrame(wx.Frame):
 
     def OnAbout(self, e):
         # A message dialog box with an OK button. wx.OK is a standard ID in wxWidgets.
-        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY黄洪磊 i2347\nV0.2\n有任何问题请发送dbc文件至int.honglei.huang@uaes.com", "关于", wx.OK)
+        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY黄洪磊 i2347\nV0.4\n有任何问题请发送dbc文件至int.honglei.huang@uaes.com", "关于", wx.OK)
         dlg.ShowModal()  # Show it
         dlg.Destroy()  # finally destroy it when finished.
 
