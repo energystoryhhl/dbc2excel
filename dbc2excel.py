@@ -1,6 +1,6 @@
 import re
 import xlwt
-import wx
+
 
 length_of_BO = 5
 str_of_BO = 'BO_'
@@ -35,6 +35,12 @@ excel_tittle = ('Msg Name\n报文名称', 'Msg Type\n报文类型', 'Msg ID\n报
                 "Msg Cycle Time Fast(ms)\n报文发送的快速周期(ms)", "Msg Nr. Of Reption\n报文快速发送的次数", "Msg Delay Time(ms)\n报文延时时间(ms)",
                 )
 
+
+def SortFun(x):
+    for i in x:
+        if "message_id" in i:
+            return i["message_id"]
+            break
 
 def set_style( color = 0, bold = False,italic = False):
     style = xlwt.XFStyle()  # 初始化样式
@@ -152,7 +158,7 @@ class DbcLoad(object):
         return ret
 
 
-    def parse_dbc(self, if_show, if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send):
+    def parse_dbc(self, if_show, if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send,if_asc_sort):
         self.if_sig_desc = if_sig_desc
         self.if_sig_val_desc = if_sig_val_desc
         self.val_description_max_number = val_description_max_number
@@ -370,6 +376,11 @@ class DbcLoad(object):
             print(self.tran_recv_list)
         if if_show:
             print('dbc文件一共有{}个BO信号'.format(self.num_of_bo))
+        ##为canid排序
+        sort_flag = False
+        if if_asc_sort == False:
+            sort_flag = True
+        self.dbc_list = sorted(self.dbc_list, key=SortFun, reverse=sort_flag)
         return self.dbc_list
 
     def dbc_info(self):
@@ -656,10 +667,10 @@ class DbcLoad(object):
 
         book.save(self.dbc_name.replace('.', '_') + '.xls')
 
-    def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send):
+    def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send,if_asc_sort):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(1,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send)
+        self.parse_dbc(0,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send, if_asc_sort)
         self.dbc_excel_gen()
 
 
@@ -667,15 +678,17 @@ class DbcLoad(object):
 
 
 if __name__ == "__main__":
-    dbc_cls = DbcLoad('Tx2TryDBC.dbc')
-    dbc_cls.dbc2excel('Tx2TryDBC.dbc')
-    # dbc_cls.parse_dbc(1)
+    print("...")
+    #dbc_cls = DbcLoad('Huanghonglei.dbc')
+    ##dbc_cls.dbc2excel('Tx2TryDBC.dbc')
+    #dbc_cls.parse_dbc(1,1,1,1,1,1)
     # dbc_cls.dbc_info()
     # dbc_cls.dbc_excel_gen()
     ###############################
     #dbc_cls.dbc_head_code_gen()
     #dbc_cls.dbc_parse_code_gen()
     #dbc_cls.dbc_define_gen()
+
 
 
 

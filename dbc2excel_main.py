@@ -16,9 +16,10 @@ class MyFrame(wx.Frame):
         self.val_description_max_number = 70
         self.if_start_val = True
         self.if_recv_send = True
+        self.if_asc_sort = True
 
         #静态文字
-        self.quote = wx.StaticText(self, label="Author: PJ/48V 黄洪磊\n", pos=(440, 260))
+        self.quote = wx.StaticText(self, label="CSDN: 黄洪磊energystory\n", pos=(420, 260))
         #控制台窗口
         self.logger = wx.TextCtrl(self, pos=(5, 300), size=(580, 130), style=wx.TE_MULTILINE | wx.TE_READONLY)
 
@@ -29,7 +30,7 @@ class MyFrame(wx.Frame):
         b = wx.Button(self,-1,u"选择dbc文件",pos=(10, 20),size=(200,100))
         self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
         # c button 增加图片
-        pic = wx.Image("source/a.bmp", wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        pic = wx.Image("./source/a.bmp", wx.BITMAP_TYPE_BMP).ConvertToBitmap()
         c = wx.BitmapButton(self,-1,pic,pos=(250, 20),size=(290,150))
         #self.Bind(wx.EVT_BUTTON, self.select_file_button, b)
 
@@ -53,9 +54,14 @@ class MyFrame(wx.Frame):
         self.Bind(wx.EVT_CHECKBOX, self.StartValEvtCheckBox, self.check3)
         self.check3.Set3StateValue(True)
 
-        self.check4 = wx.CheckBox(self, -1, '生成发送方和接收方', pos=(250, 240), size=(100, -1))
+        self.check4 = wx.CheckBox(self, -1, '生成发送方和接收方', pos=(250, 240), size=(150, -1))
         self.Bind(wx.EVT_CHECKBOX, self.RecvSndEvtCheckBox, self.check4)
         self.check4.Set3StateValue(True)
+
+        self.check5 = wx.CheckBox(self, -1, '升序排序(取消勾选降序)', pos=(250, 260), size=(150, -1))
+        self.Bind(wx.EVT_CHECKBOX, self.SortEvtCheckBox, self.check5)
+        self.check5.Set3StateValue(True)
+
         # Setting up the menu.
         filemenu = wx.Menu()
         # wx.ID_ABOUT and wx.ID_EXIT are standard IDs provided by wxWidgets.
@@ -94,6 +100,8 @@ class MyFrame(wx.Frame):
     def RecvSndEvtCheckBox(self,event):
         self.if_recv_send = not self.if_recv_send
         #print(self.if_recv_send)
+    def SortEvtCheckBox(self,event):
+        self.if_asc_sort = not  self.if_asc_sort
 
     def OnAbout(self, e):
         # A message dialog box with an OK button. wx.OK is a standard ID in wxWidgets.
@@ -111,7 +119,7 @@ class MyFrame(wx.Frame):
         if(str(self.text1.Value).isdigit()):
             self.val_description_max_number = int(self.text1.Value)
             #print(self.val_description_max_number)
-        dbc.dbc2excel(self.path,self.if_sig_desc,self.if_sig_val_desc,self.val_description_max_number,self.if_start_val,self.if_recv_send)
+        dbc.dbc2excel(self.path,self.if_sig_desc,self.if_sig_val_desc,self.val_description_max_number,self.if_start_val,self.if_recv_send,self.if_asc_sort)
         self.logger.AppendText(" 文件转换完成\n")
 
     def select_file_button(self, event):
