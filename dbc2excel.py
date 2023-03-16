@@ -157,7 +157,6 @@ class DbcLoad(object):
             ret = ret * 2 + 1
         return ret
 
-
     def parse_dbc(self, if_show, if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send,if_asc_sort):
         self.if_sig_desc = if_sig_desc
         self.if_sig_val_desc = if_sig_val_desc
@@ -279,6 +278,15 @@ class DbcLoad(object):
                                 break
                             elif line_list[i].split()[0] != str_of_SG:
                                 break
+                    # 获取列表的第二个元素
+                    def takeSecond(elem):
+                        if elem['type'] == 'SG_':
+                            return elem['start_bit']
+                        else:
+                            return 255
+                    #信号按开始bit排序
+                    bo_list.sort(key = takeSecond, reverse = True)
+
                     self.dbc_list.append(bo_list)
                     if if_show:
                         print("DBC数量:" + str(self.num_of_bo))
@@ -559,6 +567,7 @@ class DbcLoad(object):
             print(self.dbc_list)
         book = xlwt.Workbook(encoding='utf-8')
         sheet = book.add_sheet(excel_page_name, cell_overwrite_ok = True)
+        sheet = book.add_sheet(excel_page_name, cell_overwrite_ok = True)
         row_counter = 0
 
         #write tittle
@@ -595,9 +604,6 @@ class DbcLoad(object):
         # alignment.vert = xlwt.Alignment.VERT_CENTER  # 可取值: VERT_TOP, VERT_CENTER, VERT_BOTTOM, VERT_JUSTIFIED, VERT_DISTRIBUTED
         # alignment.wrap = xlwt.Alignment.WRAP_AT_RIGHT  # 自动换行
         # style.alignment = alignment  # 给样式添加文字居中属性
-
-        #排序
-        
 
         i = 0
         while i < dbc_length:#dbc_length
@@ -697,7 +703,7 @@ class DbcLoad(object):
     def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send,if_asc_sort):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(0,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send, if_asc_sort)
+        self.parse_dbc(1,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send, if_asc_sort)
         self.dbc_excel_gen()
 
 
