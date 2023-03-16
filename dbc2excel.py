@@ -602,7 +602,9 @@ class DbcLoad(object):
                     row_counter = row_counter + 1
                     sheet.write(tittle_row + row_counter, 0, bo_unit['message_name'], set_style(0x0D, True, True))
                     sheet.write(tittle_row + row_counter, 1, 'normal', set_style(0x28, True, True))
-                    sheet.write(tittle_row + row_counter, 2, str(hex(bo_unit['message_id'])), set_style(0x0D, True, True))
+                    if bo_unit['message_id'] >> 31 == 1:
+                        bo_unit['message_id'] &= ~(1 << 31)
+                    sheet.write(tittle_row + row_counter, 2, str(hex(bo_unit['message_id']).upper()), set_style(0x0D, True, True))
                     if 'cycle_time' in bo_unit:
                         sheet.write(tittle_row + row_counter, 3, 'cycle', set_style(0x28, True, True))
                         sheet.write(tittle_row + row_counter, 4, bo_unit['cycle_time'], set_style(0x0D, True, True))
