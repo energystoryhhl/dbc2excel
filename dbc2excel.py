@@ -595,13 +595,18 @@ class DbcLoad(object):
         # alignment.vert = xlwt.Alignment.VERT_CENTER  # 可取值: VERT_TOP, VERT_CENTER, VERT_BOTTOM, VERT_JUSTIFIED, VERT_DISTRIBUTED
         # alignment.wrap = xlwt.Alignment.WRAP_AT_RIGHT  # 自动换行
         # style.alignment = alignment  # 给样式添加文字居中属性
+
+        #排序
+        
+
         i = 0
         while i < dbc_length:#dbc_length
             for bo_unit in self.dbc_list[i]:#for bo_unit in self.dbc_list[i]:
                 if 'message_id' in bo_unit:
                     row_counter = row_counter + 1
                     sheet.write(tittle_row + row_counter, 0, bo_unit['message_name'], set_style(0x0D, True, True))
-                    sheet.write(tittle_row + row_counter, 1, 'normal', set_style(0x28, True, True))
+                    sheet.write(tittle_row + row_counter, 1, 'normal', set_style(0x28, True, True))\
+                    #如果CAN-ID的最高有效位被置1，则该ID是扩展的CAN ID。以此判断BO_ 1668是标准帧。
                     if bo_unit['message_id'] >> 31 == 1:
                         bo_unit['message_id'] &= ~(1 << 31)
                     sheet.write(tittle_row + row_counter, 2, str(hex(bo_unit['message_id']).upper()), set_style(0x0D, True, True))

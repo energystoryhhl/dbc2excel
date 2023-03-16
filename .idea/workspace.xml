@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69332162-3926-4903-bcfe-95b2a5b0aad5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/wx02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wx02.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dbc2Excel使用说明.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Huanghonglei_dbc.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup/dbc2excel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup/dbc2excel_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dbc2excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$c2Excel使用说明.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
