@@ -567,7 +567,6 @@ class DbcLoad(object):
             print(self.dbc_list)
         book = xlwt.Workbook(encoding='utf-8')
         sheet = book.add_sheet(excel_page_name, cell_overwrite_ok = True)
-        sheet = book.add_sheet(excel_page_name, cell_overwrite_ok = True)
         row_counter = 0
 
         #write tittle
