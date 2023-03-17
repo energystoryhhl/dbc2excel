@@ -7,9 +7,6 @@
     <list default="true" id="69332162-3926-4903-bcfe-95b2a5b0aad5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XCMG_dbc.xls" beforeDir="false" afterPath="$PROJECT_DIR$/XCMG_dbc.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbc2excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbc2excel_main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbc2excel_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
