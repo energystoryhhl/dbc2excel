@@ -81,7 +81,8 @@ class MyFrame(wx.Frame):
         # Set events.
         self.Bind(wx.EVT_MENU, self.OnAbout, menuAbout)
         self.Bind(wx.EVT_MENU, self.OnExit, menuExit)
-        self.logger.AppendText("Dbc转Excel工具仍在不断完善中\n***如果转换时间过长或无法转换，尝试取消勾选上方的选项再进行生成***\n有任何问题请在下面网址留言\nhttps://blog.csdn.net/hhlenergystory/article/details/80443454\n")
+        #有任何问题请在下面网址留言\nhttps://blog.csdn.net/hhlenergystory/article/details/80443454\n
+        self.logger.AppendText("Dbc转Excel工具\n***如果转换时间过长或无法转换，尝试取消勾选上方的选项再进行生成***\ncommit注释中禁止使用';'号,避免注释解析失败\n")
 
         self.Show(True)
 
@@ -109,7 +110,8 @@ class MyFrame(wx.Frame):
 
     def OnAbout(self, e):
         # A message dialog box with an OK button. wx.OK is a standard ID in wxWidgets.
-        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY黄洪磊 i2347\nV0.4\n有任何问题请发送dbc文件至int.honglei.huang@uaes.com", "关于", wx.OK)
+        #DBC转Excel工具\nBY黄洪磊 i2347\nV0.4\n有任何问题请发送dbc文件至int.honglei.huang@uaes.com
+        dlg = wx.MessageDialog(self, "DBC转Excel工具\nBY 黄利亚\nV0.5\n有任何问题请发送dbc文件至hly@yunshan.cn\n仅供内部使用", "关于", wx.OK)
         dlg.ShowModal()  # Show it
         dlg.Destroy()  # finally destroy it when finished.
 

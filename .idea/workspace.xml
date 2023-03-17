@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XCMG_dbc.xls" beforeDir="false" afterPath="$PROJECT_DIR$/XCMG_dbc.xls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dbc2excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbc2excel_main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbc2excel_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbc2excel_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,9 +163,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_t" />
         <item itemvalue="Python.dbc2excel_main" />
         <item itemvalue="Python.dbc2excel" />
-        <item itemvalue="Python.main_t" />
       </list>
     </recent_temporary>
   </component>
@@ -215,15 +217,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dbc2excel.py</url>
-          <line>377</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="bo_list" language="Python" />

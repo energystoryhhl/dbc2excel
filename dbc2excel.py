@@ -283,9 +283,9 @@ class DbcLoad(object):
                         if elem['type'] == 'SG_':
                             return elem['start_bit']
                         else:
-                            return 255
+                            return 0
                     #信号按开始bit排序
-                    bo_list.sort(key = takeSecond, reverse = True)
+                    bo_list.sort(key = takeSecond, reverse = False)
 
                     self.dbc_list.append(bo_list)
                     if if_show:
@@ -610,10 +610,13 @@ class DbcLoad(object):
                 if 'message_id' in bo_unit:
                     row_counter = row_counter + 1
                     sheet.write(tittle_row + row_counter, 0, bo_unit['message_name'], set_style(0x0D, True, True))
-                    sheet.write(tittle_row + row_counter, 1, 'normal', set_style(0x28, True, True))\
+
                     #如果CAN-ID的最高有效位被置1，则该ID是扩展的CAN ID。以此判断BO_ 1668是标准帧。
                     if bo_unit['message_id'] >> 31 == 1:
+                        sheet.write(tittle_row + row_counter, 1, 'extend', set_style(0x28, True, True))
                         bo_unit['message_id'] &= ~(1 << 31)
+                    else :
+                        sheet.write(tittle_row + row_counter, 1, 'normal', set_style(0x28, True, True))
                     sheet.write(tittle_row + row_counter, 2, str(hex(bo_unit['message_id']).upper()), set_style(0x0D, True, True))
                     if 'cycle_time' in bo_unit:
                         sheet.write(tittle_row + row_counter, 3, 'cycle', set_style(0x28, True, True))
@@ -664,8 +667,8 @@ class DbcLoad(object):
                     sheet.write(tittle_row + row_counter, signal_name_col + 9, str(bo_unit['offset']),style_index)
                     sheet.write(tittle_row + row_counter, signal_name_col + 10, str(bo_unit['minimum']),style_index)
                     sheet.write(tittle_row + row_counter, signal_name_col + 11, str(bo_unit['maximum']),style_index)
-                    sheet.write(tittle_row + row_counter, signal_name_col + 12, '0x00',style_index)
-                    sheet.write(tittle_row + row_counter, signal_name_col + 13, str(hex(2**bo_unit['signal_size'] - 1)),style_index)
+                    sheet.write(tittle_row + row_counter, signal_name_col + 12, '0X00',style_index)
+                    sheet.write(tittle_row + row_counter, signal_name_col + 13, str(hex(2**bo_unit['signal_size'] - 1).upper()),style_index)
                     #初始值
                     if 'inital_value' in bo_unit:
                         sheet.write(tittle_row + row_counter, signal_name_col + 14, bo_unit['inital_value'],style_index)
@@ -702,7 +705,7 @@ class DbcLoad(object):
     def dbc2excel(self, filepath,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send,if_asc_sort):
         self.dbc_fd = open(filepath, 'r')
         self.dbc_name = filepath.split("\\")[-1]
-        self.parse_dbc(1,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send, if_asc_sort)
+        self.parse_dbc(0,if_sig_desc,if_sig_val_desc,val_description_max_number,if_start_val,if_recv_send, if_asc_sort)
         self.dbc_excel_gen()
 
 
