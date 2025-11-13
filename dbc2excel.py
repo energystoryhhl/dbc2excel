@@ -240,23 +240,16 @@ class DbcLoad(object):
                             if(sg_dict['byte_order'] == 1):
                                 sg_dict['true_start_bit'] = sg_dict['start_bit']
                             else:
-                                if (sg_dict['signal_size'] <= 8 and (sg_dict['start_bit'] % 8 + 1) >= sg_dict['signal_size']  ):
-                                    sg_dict['true_start_bit'] = sg_dict['start_bit'] - sg_dict['signal_size'] + 1
-                                else:
-                                    start = sg_dict['start_bit']
-                                    size = sg_dict['signal_size']
-                                    offset = 0
-                                    #cross_bytes = 0
-                                    if((start + 1) % 8 == 0):
-                                        offset = 8 - size % 8
-                                        cross_bytes = int(size / 8) - 1
-                                        sg_dict['true_start_bit'] = start + cross_bytes * 8 + offset + 1
-                                    else:
-                                        size = size - start % 8 - 1
-                                        start = start + 7 - start % 8
-                                        offest = 8 - size % 8
-                                        cross_bytes = int(size / 8) - 1
-                                        sg_dict['true_start_bit'] = start + cross_bytes * 8 + offset + 1
+                              
+                                # Calculate in Inverted Bit Index
+                                rem_temp = sg_dict['start_bit'] % 8
+                                start_bit_inverted = sg_dict['start_bit'] - rem_temp + (7 - rem_temp)
+                                end_bit_inverted = start_bit_inverted + sg_dict['signal_size'] - 1
+
+                                # Transfer to Normal Bit Index
+                                rem_temp = end_bit_inverted % 8
+                                sg_dict['true_start_bit'] = end_bit_inverted - rem_temp + (7 - rem_temp)
+                                
                             bo_list.append(sg_dict)     #加入bo_list中
                             if if_show:
                                 print('起始位：'+str(sg_dict['start_bit']), end=' ')
